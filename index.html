@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AXL Team | Портфолио</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tag-cloud/2.2.0/tagcloud.min.js"></script>
+</head>
+<body>
+    <!-- Preloader -->
+    <div class="preloader">
+        <div class="preloader-inner">
+            <div class="axl-logo">
+                <div class="axl-letter">A</div>
+                <div class="axl-letter">X</div>
+                <div class="axl-letter">L</div>
+            </div>
+            <div class="loading-bar">
+                <div class="loading-progress"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Interactive Menu -->
+    <div class="circular-menu">
+        <div class="menu-toggle">
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        <div class="menu-items">
+            <a href="#about" class="menu-item" data-tooltip="О нас">
+                <i class="fas fa-info-circle"></i>
+            </a>
+            <a href="#team" class="menu-item" data-tooltip="Команда">
+                <i class="fas fa-users"></i>
+            </a>
+            <a href="#projects" class="menu-item" data-tooltip="Проекты">
+                <i class="fas fa-code"></i>
+            </a>
+            <a href="#tech" class="menu-item" data-tooltip="Технологии">
+                <i class="fas fa-microchip"></i>
+            </a>
+            <a href="#contact" class="menu-item" data-tooltip="Контакты">
+                <i class="fas fa-envelope"></i>
+            </a>
+        </div>
+    </div>
+
+    <div class="settings-panel">
+        <div class="language-switcher">
+            <button class="lang-btn ru active" data-lang="ru" title="Русский">RU</button>
+            <button class="lang-btn en" data-lang="en" title="English">EN</button>
+        </div>
+        <div class="theme-switcher">
+            <button class="theme-btn light" data-theme="light" title="Light Theme">
+                <i class="fas fa-sun"></i>
+            </button>
+            <button class="theme-btn dark active" data-theme="dark" title="Dark Theme">
+                <i class="fas fa-moon"></i>
+            </button>
+            <button class="theme-btn orange" data-theme="orange" title="Orange Theme">
+                <i class="fas fa-fire"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="particles" id="particles-js"></div>
+            <div class="container">
+                <div class="hero-content">
+                    <h1 class="hero-title">
+                        <span class="axl-highlight">AXL</span> Team
+                    </h1>
+                    <p class="hero-subtitle" data-lang="ru">Инновационные решения для цифрового мира</p>
+                    <p class="hero-subtitle" data-lang="en" style="display:none">Innovative solutions for digital world</p>
+                    <div class="hero-scroll">
+                        <div class="scroll-down"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="section about">
+            <div class="container">
+                <h2 class="section-title" data-lang="ru">О нас</h2>
+                <h2 class="section-title" data-lang="en" style="display:none">About Us</h2>
+                <div class="about-grid">
+                    <div class="about-card">
+                        <div class="card-icon">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                        <h3 class="card-title" data-lang="ru">Миссия</h3>
+                        <h3 class="card-title" data-lang="en" style="display:none">Mission</h3>
+                        <p class="card-text" data-lang="ru">Создавать инновационные технологические решения, которые меняют мир к лучшему.</p>
+                        <p class="card-text" data-lang="en" style="display:none">Create innovative technological solutions that change the world for the better.</p>
+                    </div>
+                    <div class="about-card">
+                        <div class="card-icon">
+                            <i class="fas fa-eye"></i>
+                        </div>
+                        <h3 class="card-title" data-lang="ru">Видение</h3>
+                        <h3 class="card-title" data-lang="en" style="display:none">Vision</h3>
+                        <p class="card-text" data-lang="ru">Стать лидерами в разработке передовых digital-решений.</p>
+                        <p class="card-text" data-lang="en" style="display:none">Become leaders in the development of advanced digital solutions.</p>
+                    </div>
+                    <div class="about-card">
+                        <div class="card-icon">
+                            <i class="fas fa-gem"></i>
+                        </div>
+                        <h3 class="card-title" data-lang="ru">Ценности</h3>
+                        <h3 class="card-title" data-lang="en" style="display:none">Values</h3>
+                        <p class="card-text" data-lang="ru">Инновации, качество, командная работа и страсть к технологиям.</p>
+                        <p class="card-text" data-lang="en" style="display:none">Innovation, quality, teamwork and passion for technology.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Team Section -->
+        <section id="team" class="section team">
+            <div class="container">
+                <h2 class="section-title" data-lang="ru">Наша команда</h2>
+                <h2 class="section-title" data-lang="en" style="display:none">Our Team</h2>
+                <div class="team-grid">
+                    <!-- Team members will be loaded via JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="section projects">
+            <div class="container">
+                <h2 class="section-title" data-lang="ru">Наши проекты</h2>
+                <h2 class="section-title" data-lang="en" style="display:none">Our Projects</h2>
+                <div class="projects-container">
+                    <div class="projects-nav">
+                        <button class="project-nav-btn prev"><i class="fas fa-chevron-left"></i></button>
+                        <div class="projects-counter">
+                            <span class="current-project">1</span> / <span class="total-projects">4</span>
+                        </div>
+                        <button class="project-nav-btn next"><i class="fas fa-chevron-right"></i></button>
+                    </div>
+                    <div class="projects-slider">
+                        <!-- Projects will be loaded via JS -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Technologies Section -->
+        <section id="tech" class="section tech">
+            <div class="container">
+                <h2 class="section-title" data-lang="ru">Технологии</h2>
+                <h2 class="section-title" data-lang="en" style="display:none">Technologies</h2>
+                <div class="tech-sphere" id="tech-sphere">
+                    <!-- Tech sphere will be generated by JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section contact">
+            <div class="container">
+                <h2 class="section-title" data-lang="ru">Контакты</h2>
+                <h2 class="section-title" data-lang="en" style="display:none">Contact Us</h2>
+                <div class="contact-grid">
+                    <div class="contact-info">
+                        <div class="info-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>contact@axl-team.com</span>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-phone"></i>
+                            <span>+7 (123) 456-78-90</span>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span data-lang="ru">Москва, ул. Технологическая, 42</span>
+                            <span data-lang="en" style="display:none">Moscow, Tekhnologicheskaya st., 42</span>
+                        </div>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-github"></i></a>
+                            <a href="#"><i class="fab fa-telegram"></i></a>
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                        </div>
+                    </div>
+                    <form class="contact-form">
+                        <div class="form-group">
+                            <input type="text" placeholder="Имя" data-lang="ru" required>
+                            <input type="text" placeholder="Name" data-lang="en" style="display:none" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" placeholder="Email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" placeholder="Тема" data-lang="ru">
+                            <input type="text" placeholder="Subject" data-lang="en" style="display:none">
+                        </div>
+                        <div class="form-group">
+                            <textarea placeholder="Сообщение" data-lang="ru" required></textarea>
+                            <textarea placeholder="Message" data-lang="en" style="display:none" required></textarea>
+                        </div>
+                        <button type="submit" class="btn" data-lang="ru">Отправить</button>
+                        <button type="submit" class="btn" data-lang="en" style="display:none">Send</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">AXL Team</div>
+                <div class="footer-copy" data-lang="ru">© 2023 Все права защищены</div>
+                <div class="footer-copy" data-lang="en" style="display:none">© 2023 All rights reserved</div>
+                <div class="footer-links">
+                    <a href="#" data-lang="ru">Политика конфиденциальности</a>
+                    <a href="#" data-lang="en" style="display:none">Privacy Policy</a>
+                    <a href="#" data-lang="ru">Условия использования</a>
+                    <a href="#" data-lang="en" style="display:none">Terms of Use</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
