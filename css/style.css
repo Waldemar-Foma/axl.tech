@@ -15,7 +15,7 @@
 [data-theme="light"] {
   --bg: var(--light);
   --bg-secondary: #F0F0F0;
-  --text: #333333;
+  --text: #afafaf;
   --text-secondary: #666666;
   --card-bg: var(--light);
   --border: #E0E0E0;
@@ -714,6 +714,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  text-decoration: none;
   color: var(--primary);
   font-size: 1.2rem;
   transition: all 0.3s ease;
@@ -935,5 +936,59 @@ body {
   
   .footer-links {
     margin-top: 20px;
+  }
+}
+
+/* Theme Icons Fix (цвет иконок зависит от темы) */
+[data-theme="light"] .theme-btn i {
+  color: #000 !important;
+}
+[data-theme="dark"] .theme-btn i,
+[data-theme="orange"] .theme-btn i {
+  color: #fff !important;
+}
+
+/* Улучшение адаптива для .team-member и .about-card */
+@media (max-width: 480px) {
+  .about-card, .team-member {
+    padding: 20px 15px;
+  }
+
+  .member-photo {
+    height: 180px;
+  }
+
+  .hero-subtitle {
+    font-size: 1rem;
+    padding: 0 10px;
+  }
+
+  .theme-btn, .lang-btn {
+    font-size: 0.7rem;
+    width: 28px;
+    height: 28px;
+  }
+
+  .menu-toggle {
+    width: 50px;
+    height: 50px;
+  }
+
+  .menu-item {
+    width: 40px;
+    height: 40px;
+    font-size: 1rem;
+  }
+
+  .project-info {
+    padding: 15px;
+  }
+
+  .project-description {
+    font-size: 0.9rem;
+  }
+
+  .tagcloud--item {
+    font-size: 0.8rem !important;
   }
 }
