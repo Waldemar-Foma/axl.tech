@@ -91,7 +91,7 @@ document.addEventListener('DOMContentLoaded', function() {
             photo: 'https://sun9-16.userapi.com/impg/ceLsVmfjKm1m2T8-tF8rHcOXo8H-_7fAIc9Z4A/Z4CK4i1ernA.jpg?size=2560x1818&quality=95&sign=439daa320abdbb115e982be6ca275b83&type=album',
             bio: 'Опыт работы более 5 лет. Специализируется на веб разработке, разработке ТГ-ботов, разработки web/desctop приложений.',
             bioEn: 'Work experience of more than 5 years. Specializes in web development, telegram bot development, and web/desktop application development.',
-            skills: ['Node.js', 'Python', 'HTML', 'Docker', 'CSS3', 'JavaScript', 'Figma', 'Adobe Illustrator', 'Adobe Photoshop'],
+            skills: ['Node.js', 'Python', 'HTML', 'Docker', 'CSS3', 'JavaScript', 'Figma', 'Adobe Illustrator', 'Adobe Photoshop', "Excel", "PowerPoint", "Communication", "PHP", "TypeScript"],
         },
         {
             name: 'Устинов Максим',
@@ -101,7 +101,7 @@ document.addEventListener('DOMContentLoaded', function() {
             photo: 'https://sun9-79.userapi.com/impg/BAZ0JrH6-VD-V4NMKL7vLOxE65c0PcMlHU8ynw/rCNm9Ij6IQQ.jpg?size=1620x2160&quality=95&sign=394cf2bf293a3cdfe4a248bac3977bd1&type=album',
             bio: 'Руководит всеми процессами во время работы над проектом, поддерживает связь с клиентом, ищет и сообщает о багах, для дальнейшего устранения.',
             bioEn: 'Manages all processes while working on the project, keeps in touch with the client, searches for and reports bugs for further elimination.',
-            skills: ['Figma', 'CSS3', 'HTML', 'Adobe Photoshop'],
+            skills: ['Figma', 'CSS3', 'HTML', 'Adobe Photoshop', "Python", "SWOT-analysis", "Communication", "PowerPoint", "English Language C1", "Managing", "Team Building"],
         },
     ];
 
