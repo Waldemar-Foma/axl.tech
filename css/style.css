@@ -15,7 +15,7 @@
 [data-theme="light"] {
   --bg: var(--light);
   --bg-secondary: #F0F0F0;
-  --text: #afafaf;
+  --text: #333333;
   --text-secondary: #666666;
   --card-bg: var(--light);
   --border: #E0E0E0;
@@ -340,7 +340,7 @@ body {
   width: 36px;
   height: 36px;
   border-radius: 50%;
-  display: flex;
+  display: flex !important;
   justify-content: center;
   align-items: center;
   background-color: transparent;
@@ -939,56 +939,47 @@ body {
   }
 }
 
-/* Theme Icons Fix (цвет иконок зависит от темы) */
-[data-theme="light"] .theme-btn i {
-  color: #000 !important;
-}
-[data-theme="dark"] .theme-btn i,
-[data-theme="orange"] .theme-btn i {
-  color: #fff !important;
+/* Language switcher styles */
+.language-switcher {
+  display: flex !important;
 }
 
-/* Улучшение адаптива для .team-member и .about-card */
-@media (max-width: 480px) {
-  .about-card, .team-member {
-    padding: 20px 15px;
-  }
+.lang-btn {
+  display: flex !important;
+}
 
-  .member-photo {
-    height: 180px;
-  }
+.lang-en {
+  display: none;
+}
 
-  .hero-subtitle {
-    font-size: 1rem;
-    padding: 0 10px;
-  }
+[lang="en"] .lang-en {
+  display: block;
+}
 
-  .theme-btn, .lang-btn {
-    font-size: 0.7rem;
-    width: 28px;
-    height: 28px;
-  }
+[lang="en"] .lang-ru {
+  display: none;
+}
 
-  .menu-toggle {
-    width: 50px;
-    height: 50px;
-  }
+/* For inline elements */
+[lang="en"] span.lang-en,
+[lang="en"] a.lang-en,
+[lang="en"] button.lang-en {
+  display: inline;
+}
 
-  .menu-item {
-    width: 40px;
-    height: 40px;
-    font-size: 1rem;
-  }
+[lang="en"] span.lang-ru,
+[lang="en"] a.lang-ru,
+[lang="en"] button.lang-ru {
+  display: none;
+}
 
-  .project-info {
-    padding: 15px;
-  }
+/* For inputs and textareas */
+[lang="en"] input.lang-en,
+[lang="en"] textarea.lang-en {
+  display: block;
+}
 
-  .project-description {
-    font-size: 0.9rem;
-  }
-
-  .tagcloud--item {
-    font-size: 0.8rem !important;
-  }
+[lang="en"] input.lang-ru,
+[lang="en"] textarea.lang-ru {
+  display: none;
 }
