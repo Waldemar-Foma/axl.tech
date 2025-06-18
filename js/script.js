@@ -1,4 +1,25 @@
 document.addEventListener('DOMContentLoaded', function() {
+    // Cookie functions
+    function setCookie(name, value, days = 365) {
+        const date = new Date();
+        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+        const expires = "expires=" + date.toUTCString();
+        document.cookie = name + "=" + value + ";" + expires + ";path=/";
+    }
+
+    function getCookie(name) {
+        const nameEQ = name + "=";
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+            let cookie = cookies[i];
+            while (cookie.charAt(0) === ' ') cookie = cookie.substring(1);
+            if (cookie.indexOf(nameEQ) === 0) {
+                return cookie.substring(nameEQ.length);
+            }
+        }
+        return null;
+    }
+
     // Preloader
     const preloader = document.querySelector('.preloader');
     const loadingProgress = document.querySelector('.loading-progress');
@@ -17,7 +38,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     function setTheme(theme) {
         html.setAttribute('data-theme', theme);
-        localStorage.setItem('theme', theme);
+        localStorage.setItem('theme', theme); // Keep theme in localStorage for consistency
         
         // Update icon colors
         document.documentElement.style.setProperty(
@@ -41,7 +62,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     function setLanguage(lang) {
         html.setAttribute('lang', lang);
-        localStorage.setItem('language', lang);
+        setCookie('language', lang); // Save language to cookie
         
         langButtons.forEach(btn => {
             btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
@@ -145,7 +166,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const savedTheme = localStorage.getItem('theme') || 'dark';
     setTheme(savedTheme);
 
-    const savedLang = localStorage.getItem('language') || 'ru';
+    const savedLang = getCookie('language') || 'ru'; // Get language from cookie
     setLanguage(savedLang);
     
     renderTeam(savedLang);
