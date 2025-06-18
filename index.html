@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AXL Team | Портфолио</title>
+    <link rel="stylesheet" href="css/menu.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" type="image/png" href="images/logo.png">
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+</head>
+<body>
+    <!-- Preloader -->
+    <div class="preloader">
+        <div class="preloader-inner">
+            <div class="axl-logo">
+                <div class="axl-letter">A</div>
+                <div class="axl-letter">X</div>
+                <div class="axl-letter">L</div>
+            </div>
+            <div class="loading-bar">
+                <div class="loading-progress"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Compact Menu -->
+    <div class="menu-wrap">
+        <input type="checkbox" class="toggler" />
+        <div class="hamburger"><div></div></div>
+        <div class="menu">
+            <div class="menu-content">
+                <!-- Кнопка закрытия меню -->
+                <button class="menu-close" aria-label="Закрыть меню">
+                    <i class="fas fa-times"></i>
+                </button>
+                <ul>
+                    <li>
+                        <a href="index.html" class="active"
+                            ><i class="fas fa-home"></i>
+                            <span class="lang-ru">Главная</span
+                            ><span class="lang-en">Home</span></a>
+                    </li>
+                    <li>
+                        <a href="#about"
+                            ><i class="fas fa-users"></i>
+                            <span class="lang-ru">О команде</span
+                            ><span class="lang-en">About</span></a>
+                    </li>
+                    <li>
+                        <a href="projects.html">
+                            <i class="fas fa-code"></i>
+                            <span class="lang-ru">Проекты</span>
+                            <span class="lang-en">Projects</span></a>
+                    </li>
+                    <li>
+                        <a href="contact.html">
+                            <i class="fas fa-envelope"></i>
+                            <span class="lang-ru">Контакты</span>
+                            <span class="lang-en">Contact</span></a>
+                    </li>
+                </ul>
+
+                <div class="menu-settings">
+                    <div class="language-switcher">
+                        <button class="lang-btn ru active" data-lang="ru">RU</button>
+                        <button class="lang-btn en" data-lang="en">EN</button>
+                    </div>
+                    <div class="theme-switcher">
+                        <button class="theme-btn light" data-theme="light" title="Light Theme">
+                            <i class="fas fa-sun"></i>
+                        </button>
+                        <button class="theme-btn dark" data-theme="dark" title="Dark Theme">
+                            <i class="fas fa-moon"></i>
+                        </button>
+                        <button class="theme-btn orange" data-theme="orange" title="Orange Theme">
+                            <i class="fas fa-fire"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="particles" id="particles-js"></div>
+            <div class="container">
+                <div class="hero-content">
+                    <h1 class="hero-title">
+                        <span class="axl-highlight">AXL</span> <span-text>Team</span-text>
+                    </h1>
+                    <p class="hero-subtitle lang-ru">
+                        <span-text>Инновационные решения для цифрового мира</span-text>
+                    </p>
+                    <span-text><p class="hero-subtitle lang-en">Innovative solutions for digital world</p></span-text>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="section about-section">
+            <div class="container">
+                <h2 class="section-title lang-ru">О нашей команде</h2>
+                <h2 class="section-title lang-en">About Our Team</h2>
+
+                <div class="about-grid">
+                    <div class="about-text">
+                        <p class="lang-ru">
+                            Мы — команда IT-энтузиастов, которая превращает сложные задачи
+                            в элегантные решения. Нас объединяет страсть к технологиям,
+                            гибкий подход и желание создавать продукты, которые работают
+                            на результат. У нас есть эксперты в fullstack-разработке,
+                            DevOps, мобильных приложениях, машинном обучении и блокчейне,
+                            а это значит, что мы можем взяться за проект любой сложности —
+                            от стартапа до корпоративной системы. Мы не просто пишем код,
+                            а продумываем архитектуру, оптимизируем производительность и
+                            делаем так, чтобы ваш продукт выделялся. Готовы работать в
+                            Agile-режиме, быстро адаптироваться к изменениям и держать вас
+                            в курсе на каждом этапе. Наш принцип — минимум бюрократии,
+                            максимум дела. Хотите нестандартное решение для нишевой задачи?
+                            Или просто надёжного подрядчика, который не пропадёт после ТЗ?
+                            Мы ваш вариант.
+                        </p>
+                        <p class="lang-en">
+                            We are a team of IT enthusiasts who turn complex tasks into
+                            elegant solutions. We are united by a passion for technology, a
+                            flexible approach and a desire to create products that work for
+                            results. We have experts in fullstack development, DevOps,
+                            mobile applications, machine learning and blockchain, which
+                            means that we can take on a project of any complexity - from a
+                            startup to an enterprise system. We don't just write code, we
+                            think over the architecture, optimize performance, and make
+                            your product stand out. We are ready to work in Agile mode,
+                            adapt quickly to changes and keep you informed at every stage.
+                            Our principle is a minimum of bureaucracy, a maximum of
+                            business. Do you want a non-standard solution for a niche task?
+                            Or just a reliable contractor who will not disappear after the
+                            technical task? We are your option.
+                        </p>
+
+                        <div class="stats-grid">
+                            <div class="stats-card">
+                                <div class="stats-number">3+</div>
+                                <div class="stats-title lang-ru">Лет опыта</div>
+                                <div class="stats-title lang-en">Years of experience</div>
+                            </div>
+                            <div class="stats-card">
+                                <div class="stats-number">12+</div>
+                                <div class="stats-title lang-ru">Проектов</div>
+                                <div class="stats-title lang-en">Projects</div>
+                            </div>
+                            <div class="stats-card">
+                                <div class="stats-number">100%</div>
+                                <div class="stats-title lang-ru">Довольных клиентов</div>
+                                <div class="stats-title lang-en">Happy clients</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="about-image">
+                        <img
+                            src="images/team.jpg"
+                            alt="Our Team"
+                            class="team-photo"
+                        />
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Team Section -->
+        <section class="section team-section">
+            <div class="container">
+                <h2 class="section-title lang-ru">Наши специалисты</h2>
+                <h2 class="section-title lang-en">Our Specialists</h2>
+
+                <div class="team-grid">
+                    <!-- Team members will be loaded via JS -->
+                </div>
+
+                <div class="values-grid">
+                    <div class="value-card">
+                        <div class="value-icon"><i class="fas fa-lightbulb"></i></div>
+                        <h3 class="lang-ru">Инновации</h3>
+                        <h3 class="lang-en">Innovation</h3>
+                        <p class="lang-ru">Постоянно исследуем новые технологии</p>
+                        <p class="lang-en">Constantly exploring new technologies</p>
+                    </div>
+                    <div class="value-card">
+                        <div class="value-icon"><i class="fas fa-handshake"></i></div>
+                        <h3 class="lang-ru">Надежность</h3>
+                        <h3 class="lang-en">Reliability</h3>
+                        <p class="lang-ru">Выполняем обещания и соблюдаем сроки</p>
+                        <p class="lang-en">We keep promises and meet deadlines</p>
+                    </div>
+                    <div class="value-card">
+                        <div class="value-icon"><i class="fas fa-heart"></i></div>
+                        <h3 class="lang-ru">Страсть</h3>
+                        <h3 class="lang-en">Passion</h3>
+                        <p class="lang-ru">Любим то, что делаем</p>
+                        <p class="lang-en">We love what we do</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="section cta-section">
+            <div class="container">
+                <h2 class="section-title lang-ru">Готовы с нами сотрудничать?</h2>
+                <h2 class="section-title lang-en">Are you ready to cooperate with us?</h2>
+                <div class="cta-buttons">
+                    <a href="contact.html" class="btn btn-primary lang-ru">Связаться с нами</a>
+                    <a href="contact.html" class="btn btn-primary lang-en">Contact Us</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">AXL Team</div>
+                <div class="footer-copy lang-ru">© 2025 Все права защищены</div>
+                <div class="footer-copy lang-en">© 2025 All rights reserved</div>
+                <div class="footer-links">
+                    <a href="other/politics.html" class="lang-ru">Политика конфиденциальности</a>
+                    <a href="other/politics.html" class="lang-en">Privacy Policy</a>
+                    <a href="other/conditions.html" class="lang-ru">Условия использования</a>
+                    <a href="other/conditions.html" class="lang-en">Terms of Use</a>
+                </div>
+                <div class="footer-social">
+                    <a href="https://github.com/Waldemar-Foma"><i class="fab fa-github"></i></a>
+                    <a href="https://vk.com/axl_invincible"><i class="fab fa-vk"></i></a>
+                    <a href="https://t.me/axel_Invincible"><i class="fab fa-telegram"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="js/script.js"></script>
+    <script src="js/menu.js"></script>
+</body>
+</html>
