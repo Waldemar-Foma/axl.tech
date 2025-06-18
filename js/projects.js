@@ -16,45 +16,15 @@ document.addEventListener('DOMContentLoaded', function() {
     // Project data
     const projectsData = [
         {
-            title: 'Корпоративный портал',
-            titleEn: 'Corporate Portal',
-            category: 'Веб-разработка',
-            categoryEn: 'Web Development',
-            description: 'Комплексное решение для автоматизации бизнес-процессов крупной компании.',
-            descriptionEn: 'Comprehensive business process automation solution for large enterprises.',
-            image: 'https://www.directum.ru/application/images/coprortal-dir_pic-1.png',
-            tags: ['web']
+            title: 'SkillScout — сервис по подбору кандидатов на вакансию по типу личности',
+            titleEn: 'SkillScout — candidate matching service based on personality type',
+            category: 'Веб-разработка / HR-технологии', 
+            categoryEn: 'Web Development / HR Technologies',
+            description: 'Автоматизированный сервис для подбора кандидатов на вакансии с учетом их психологического профиля. Интегрирует психометрические модели (Big Five, MBTI) и технологии анализа данных для повышения эффективности рекрутинга.',
+            descriptionEn: 'Automated service for candidate matching based on psychological profiling. Integrates psychometric models (Big Five, MBTI) and data analysis technologies to enhance recruitment efficiency.',
+            image: 'https://sun9-17.userapi.com/impg/2DAJggRJUf4eDUGe7WZiQ-j2RCVb8BguTdNYGA/EAa99hqebmY.jpg?size=1080x1440&quality=95&sign=87c1a6e9799b010a087f9788b67228df&type=album',
+            tags: ['web', 'ai', 'mobile']
         },
-        {
-            title: 'Мобильное приложение',
-            titleEn: 'Mobile Application',
-            category: 'Мобильная разработка',
-            categoryEn: 'Mobile Development',
-            description: 'Приложение для управления финансами с использованием искусственного интеллекта.',
-            descriptionEn: 'Finance management app using artificial intelligence.',
-            image: 'https://lms-api.ycla-coding.com/image/abd7cf0e-fe47-4833-84fd-4b5a011cbeb5.jpeg',
-            tags: ['mobile', 'ai']
-        },
-        {
-            title: 'Интернет-магазин',
-            titleEn: 'E-commerce',
-            category: 'Веб-разработка',
-            categoryEn: 'Web Development',
-            description: 'Высоконагруженная платформа электронной коммерции с индивидуальным дизайном.',
-            descriptionEn: 'High-load e-commerce platform with custom design.',
-            image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZEbXIkT7hQADpQx9eOufUvI4kl91ac-fu2g&s',
-            tags: ['web']
-        },
-        {
-            title: 'Система аналитики',
-            titleEn: 'Analytics System',
-            category: 'Big Data',
-            categoryEn: 'Big Data',
-            description: 'Система сбора и анализа больших данных в реальном времени.',
-            descriptionEn: 'Real-time big data collection and analysis system.',
-            image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQd_ErmPGYtiDr-oTZtEcfPrHNw7-yunUinkQ&s',
-            tags: ['ai']
-        }
     ];
 
     // DOM elements
