@@ -397,6 +397,11 @@ body {
   margin-bottom: 15px;
 }
 
+.value-content {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
 /* CTA Section */
 .cta-section {
   text-align: center;
@@ -743,23 +748,31 @@ body {
 }
 
 /* Contact Section Styles */
-.contact-section {
-    padding: 100px 0;
-}
-
+/* Стили для контактной секции */
 .contact-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 60px;
+    gap: 50px;
     align-items: center;
 }
 
-.contact-info {
-    padding: 40px;
-    background-color: var(--card-bg);
-    border-radius: 20px;
-    border: 1px solid var(--border);
+.contact-image {
+    position: relative;
+    border-radius: 15px;
+    overflow: hidden;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.responsive-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.5s ease;
+    border-radius: 15px;
+}
+
+.contact-image:hover .responsive-image {
+    transform: scale(1.03);
 }
 
 .info-item {
@@ -921,4 +934,33 @@ body {
   .container {
     max-width: 1200px;
   }
+}
+
+@media (max-width: 992px) {
+    .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    .contact-image {
+        order: -1;
+        max-width: 500px;
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 768px) {
+    .contact-image {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 576px) {
+    .contact-grid {
+        gap: 20px;
+    }
+    
+    .contact-image {
+        border-radius: 10px;
+    }
 }
