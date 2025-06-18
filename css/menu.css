@@ -1,0 +1,24 @@
+.menu-close {
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+/* Если тема тёмная — цвет белый */
+html[data-theme="dark"] .menu-close {
+    color: #fff;
+}
+
+/* Если тема оранжевая — например, сделаем оранжевый */
+html[data-theme="orange"] .menu-close {
+    color: #ff6600;
+}
+
+span-text {
+    color:#fff;
+}
