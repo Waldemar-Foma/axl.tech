@@ -1,4 +1,18 @@
 document.addEventListener('DOMContentLoaded', function() {
+    // Cookie function to get language
+    function getCookie(name) {
+        const nameEQ = name + "=";
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+            let cookie = cookies[i];
+            while (cookie.charAt(0) === ' ') cookie = cookie.substring(1);
+            if (cookie.indexOf(nameEQ) === 0) {
+                return cookie.substring(nameEQ.length);
+            }
+        }
+        return null;
+    }
+
     // Project data
     const projectsData = [
         {
@@ -51,8 +65,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const modalClose = document.querySelector('.modal-close');
     const html = document.documentElement;
 
-    // Current language
-    let currentLang = html.getAttribute('lang') || 'ru';
+    // Current language - get from cookie first, then from html attribute
+    let currentLang = getCookie('language') || html.getAttribute('lang') || 'ru';
 
     // Render projects
     function renderProjects(filter = 'all') {
@@ -153,7 +167,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Handle language change
     function handleLanguageChange() {
-        currentLang = html.getAttribute('lang') || 'ru';
+        currentLang = getCookie('language') || html.getAttribute('lang') || 'ru';
         const activeFilter = document.querySelector('.filter-btn.active');
         const currentFilter = activeFilter ? activeFilter.getAttribute('data-filter') : 'all';
         renderProjects(currentFilter);
