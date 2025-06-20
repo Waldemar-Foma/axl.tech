@@ -107,6 +107,16 @@ document.addEventListener('DOMContentLoaded', function() {
             bioEn: 'Manages all processes while working on the project, keeps in touch with the client, searches for and reports bugs for further elimination.',
             skills: ['Figma', 'CSS3', 'HTML', 'Adobe Photoshop', "Python", "SWOT-analysis", "Communication", "PowerPoint", "English Language C1", "Managing", "Team Building"],
         },
+        {
+            name: 'Айрапетян Эрик',
+            nameEn: 'Ayrapetyan Erik',
+            role: 'Backend',
+            roleEn: 'Backend',
+            photo: 'https://i.postimg.cc/tTLK3nDq/photo-2025-06-21-00-21-49.jpg',
+            bio: 'Обеспечивает стабильную работу всех сервисов платформы. Не только от начала до конца ее реализации, но и в течение ее работы.',
+            bioEn: 'Ensures stable operation of all platform services. Not only from the beginning to the end of its implementation, but also during its operation.',
+            skills: ["SQL", 'CSS3', 'HTML', "Python", "Java", "Docker", "PowerPoint", "Excel", "Communication", "Armenian language", "Node.js", "C#", "Unity", "Blender", "Wordpress"],
+        },
     ];
 
     function renderTeam(lang) {
