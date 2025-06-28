@@ -1,0 +1,239 @@
+/* Modern Pricing Table */
+.price-section {
+    padding: 100px 0;
+    background-color: var(--bg-secondary);
+}
+
+.price-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.price-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 15px;
+    position: relative;
+}
+
+.price-title:after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: var(--primary);
+}
+
+.price-subtitle {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Tabs */
+.price-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+}
+
+.price-tab {
+    padding: 12px 24px;
+    background-color: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.price-tab:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-color: var(--primary-light);
+}
+
+.price-tab.active {
+    background-color: var(--primary);
+    color: white;
+    border-color: var(--primary);
+    box-shadow: 0 4px 16px rgba(var(--primary-rgb), 0.2);
+}
+
+/* Pricing Table */
+.pricing-table-container {
+    width: 100%;
+    overflow-x: auto;
+    margin-bottom: 40px;
+    border-radius: 12px;
+    background: var(--card-bg);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    border: 1px solid var(--border);
+}
+
+.pricing-table {
+    width: 100%;
+    min-width: 900px;
+}
+
+.pricing-header {
+    display: flex;
+    background-color: var(--primary);
+    color: white;
+    border-radius: 12px 12px 0 0;
+    font-weight: 600;
+}
+
+.pricing-header-item {
+    padding: 18px 20px;
+    text-align: left;
+}
+
+.service-col { flex: 2; }
+.price-col { flex: 1; }
+.features-col { flex: 3; }
+.action-col { flex: 1; }
+
+.pricing-body {
+    display: flex;
+    flex-direction: column;
+}
+
+.pricing-row {
+    display: flex;
+    align-items: center;
+    padding: 18px 20px;
+    border-bottom: 1px solid var(--border);
+    transition: background-color 0.2s ease;
+}
+
+.pricing-row:last-child {
+    border-bottom: none;
+    border-radius: 0 0 12px 12px;
+}
+
+.pricing-row:hover {
+    background-color: rgba(var(--primary-rgb), 0.03);
+}
+
+.pricing-cell {
+    padding: 8px 12px;
+}
+
+.price-amount {
+    font-weight: 700;
+    color: var(--primary);
+    font-size: 1.2rem;
+}
+
+.popular-badge {
+    background-color: var(--primary);
+    color: white;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    margin-left: 8px;
+    display: inline-block;
+}
+
+.price-features {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.price-feature {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+}
+
+.price-feature i {
+    color: var(--primary);
+    font-size: 0.8rem;
+    margin-top: 4px;
+}
+
+.order-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 20px;
+    background-color: var(--primary);
+    color: white;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    gap: 8px;
+}
+
+.order-btn:hover {
+    background-color: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(var(--primary-rgb), 0.2);
+}
+
+/* Notice */
+.price-notice {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    max-width: 800px;
+    margin: 40px auto 0;
+    padding: 18px 25px;
+    background-color: rgba(var(--primary-rgb), 0.08);
+    border-radius: 10px;
+    color: var(--primary);
+    border-left: 4px solid var(--primary);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .price-section {
+        padding: 80px 0;
+    }
+    
+    .price-title {
+        font-size: 2rem;
+    }
+    
+    .price-tabs {
+        justify-content: flex-start;
+        overflow-x: auto;
+        padding-bottom: 10px;
+    }
+    
+    .price-tab {
+        flex-shrink: 0;
+    }
+}
+
+@media (max-width: 576px) {
+    .price-section {
+        padding: 60px 0;
+    }
+    
+    .price-title {
+        font-size: 1.8rem;
+    }
+    
+    .price-notice {
+        flex-direction: column;
+        text-align: center;
+    }
+}
