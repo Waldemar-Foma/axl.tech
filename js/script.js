@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Cookie functions
+    // 1. Cookie Functions
     function setCookie(name, value, days = 365) {
         const date = new Date();
         date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
@@ -20,31 +20,25 @@ document.addEventListener('DOMContentLoaded', function() {
         return null;
     }
 
-    // Preloader
+    // 2. Minimal Preloader
     const preloader = document.querySelector('.preloader');
-    const loadingProgress = document.querySelector('.loading-progress');
-    
-    if (loadingProgress) loadingProgress.style.width = '100%';
     if (preloader) {
         setTimeout(() => {
             preloader.style.opacity = '0';
-            setTimeout(() => preloader.style.display = 'none', 300);
-        }, 1500);
+            setTimeout(() => {
+                preloader.style.display = 'none';
+                initParticles();
+            }, 500);
+        }, 2000);
     }
 
-    // Theme switcher
+    // 3. Theme Switcher
     const themeButtons = document.querySelectorAll('.theme-btn');
     const html = document.documentElement;
     
     function setTheme(theme) {
         html.setAttribute('data-theme', theme);
-        localStorage.setItem('theme', theme); // Keep theme in localStorage for consistency
-        
-        // Update icon colors
-        document.documentElement.style.setProperty(
-            '--icon-color', 
-            theme === 'dark' ? '#ffffff' : '#000000'
-        );
+        localStorage.setItem('theme', theme);
         
         themeButtons.forEach(btn => {
             btn.classList.toggle('active', btn.getAttribute('data-theme') === theme);
@@ -57,12 +51,12 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Language switcher
+    // 4. Language Switcher
     const langButtons = document.querySelectorAll('.lang-btn');
     
     function setLanguage(lang) {
         html.setAttribute('lang', lang);
-        setCookie('language', lang); // Save language to cookie
+        setCookie('language', lang);
         
         langButtons.forEach(btn => {
             btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
@@ -84,7 +78,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Team Section
+    // 5. Team Section
     const teamGrid = document.querySelector('.team-grid');
     const teamData = [
         {
@@ -112,7 +106,7 @@ document.addEventListener('DOMContentLoaded', function() {
             nameEn: 'Ayrapetyan Erik',
             role: 'Backend',
             roleEn: 'Backend',
-            photo: 'https://i.postimg.cc/tTLK3nDq/photo-2025-06-21-00-21-49.jpg',
+            photo: '../images/erik.jpg',
             bio: 'Обеспечивает стабильную работу всех сервисов платформы. Не только от начала до конца ее реализации, но и в течение ее работы.',
             bioEn: 'Ensures stable operation of all platform services. Not only from the beginning to the end of its implementation, but also during its operation.',
             skills: ["SQL", 'CSS3', 'HTML', "Python", "Java", "Docker", "PowerPoint", "Excel", "Communication", "Armenian language", "Node.js", "C#", "Unity", "Blender", "Wordpress"],
@@ -140,28 +134,37 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Particles.js
-    if (document.getElementById('particles-js') && typeof particlesJS !== 'undefined') {
-        particlesJS('particles-js', {
-            particles: {
-                number: { value: 80, density: { enable: true, value_area: 800 }},
-                color: { value: "#FF6B00" },
-                shape: { type: "circle", stroke: { width: 0, color: "#000" }},
-                opacity: { value: 0.5, random: true, anim: { enable: true, speed: 1, opacity_min: 0.1 }},
-                size: { value: 3, random: true, anim: { enable: true, speed: 2, size_min: 0.1 }},
-                line_linked: { enable: true, distance: 150, color: "#FF6B00", opacity: 0.4, width: 1 },
-                move: { enable: true, speed: 1, direction: "none", random: true, out_mode: "out" }
-            },
-            interactivity: {
-                detect_on: "canvas",
-                events: { onhover: { enable: true, mode: "grab" }, onclick: { enable: true, mode: "push" }, resize: true },
-                modes: { grab: { distance: 140, line_linked: { opacity: 1 }}, push: { particles_nb: 4 }}
-            },
-            retina_detect: true
-        });
+    // 6. Particles.js Initialization
+    function initParticles() {
+        if (document.getElementById('particles-js') && typeof particlesJS !== 'undefined') {
+            particlesJS('particles-js', {
+                particles: {
+                    number: { value: 80, density: { enable: true, value_area: 800 }},
+                    color: { value: "#FF6B00" },
+                    shape: { type: "circle", stroke: { width: 0, color: "#000" }},
+                    opacity: { value: 0.5, random: true, anim: { enable: true, speed: 1, opacity_min: 0.1 }},
+                    size: { value: 3, random: true, anim: { enable: true, speed: 2, size_min: 0.1 }},
+                    line_linked: { enable: true, distance: 150, color: "#FF6B00", opacity: 0.4, width: 1 },
+                    move: { enable: true, speed: 1, direction: "none", random: true, out_mode: "out" }
+                },
+                interactivity: {
+                    detect_on: "canvas",
+                    events: { 
+                        onhover: { enable: true, mode: "grab" }, 
+                        onclick: { enable: true, mode: "push" }, 
+                        resize: true 
+                    },
+                    modes: { 
+                        grab: { distance: 140, line_linked: { opacity: 1 }}, 
+                        push: { particles_nb: 4 }
+                    }
+                },
+                retina_detect: true
+            });
+        }
     }
 
-    // Contact Form
+    // 7. Contact Form
     const contactForm = document.querySelector('.contact-form');
     if (contactForm) {
         contactForm.addEventListener('submit', function(e) {
@@ -172,11 +175,11 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Initialize
+    // 8. Initialize All
     const savedTheme = localStorage.getItem('theme') || 'dark';
     setTheme(savedTheme);
 
-    const savedLang = getCookie('language') || 'ru'; // Get language from cookie
+    const savedLang = getCookie('language') || 'ru';
     setLanguage(savedLang);
     
     renderTeam(savedLang);
