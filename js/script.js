@@ -184,3 +184,39 @@ document.addEventListener('DOMContentLoaded', function() {
     
     renderTeam(savedLang);
 });
+
+// 8. Modal Window
+const modal = document.getElementById('contactModal');
+const modalBtn = document.getElementById('contactModalBtn');
+const closeModal = document.querySelector('.close-modal');
+
+if (modal && modalBtn) {
+    modalBtn.addEventListener('click', () => {
+        modal.style.display = 'block';
+        document.body.style.overflow = 'hidden';
+    });
+
+    closeModal.addEventListener('click', () => {
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    });
+
+    window.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+    });
+
+    // Добавляем анимацию при закрытии
+    modal.addEventListener('click', function(e) {
+        if (e.target === this) {
+            this.style.animation = 'modalFadeOut 0.3s ease';
+            setTimeout(() => {
+                this.style.display = 'none';
+                this.style.animation = '';
+                document.body.style.overflow = 'auto';
+            }, 300);
+        }
+    });
+}
