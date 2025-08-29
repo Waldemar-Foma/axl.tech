@@ -8,29 +8,25 @@
     cursor: pointer;
     z-index: 1001;
 }
-/* Анимация закрытия меню */
+
 .menu.closing {
     opacity: 0;
     transition: opacity 0.3s ease;
 }
 
-/* Гарантируем, что меню будет поверх других элементов */
 .menu {
     z-index: 1000;
 }
 
-/* Стиль для кнопки закрытия при фокусе */
 .menu-close:focus {
     outline: 2px solid var(--primary);
     outline-offset: 2px;
 }
 
-/* Если тема тёмная — цвет белый */
 html[data-theme="dark"] .menu-close {
     color: #fff;
 }
 
-/* Если тема оранжевая — например, сделаем оранжевый */
 html[data-theme="orange"] .menu-close {
     color: #ff6600;
 }
