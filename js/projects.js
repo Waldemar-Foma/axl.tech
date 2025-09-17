@@ -25,6 +25,16 @@ document.addEventListener('DOMContentLoaded', function() {
             image: 'https://sun9-17.userapi.com/impg/2DAJggRJUf4eDUGe7WZiQ-j2RCVb8BguTdNYGA/EAa99hqebmY.jpg?size=1080x1440&quality=95&sign=87c1a6e9799b010a087f9788b67228df&type=album',
             tags: ['web', 'ai', 'mobile']
         },
+        {
+            title: 'Конструктор графов - решение для профессионалов',
+            titleEn: 'Graph Constructor - a solution for professionals',
+            category: 'Веб-разработка', 
+            categoryEn: 'Web Development',
+            description: 'Веб сервис с технологией построения графов на плоскости для профессионалов.',
+            descriptionEn: 'A web service with graph construction technology on a plane for professionals.',
+            image: 'https://prog-cpp.ru/wp-content/uploads/width.gif',
+            tags: ['web']
+        },
     ];
 
     // DOM elements
@@ -150,3 +160,4 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialize
     renderProjects();
 });
+
