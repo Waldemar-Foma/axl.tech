@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', function() {
             categoryEn: 'Web Development',
             description: 'Веб сервис с технологией построения графов на плоскости для профессионалов.',
             descriptionEn: 'A web service with graph construction technology on a plane for professionals.',
-            image: 'https://prog-cpp.ru/wp-content/uploads/width.gif',
+            image: 'https://cdn2.hexlet.io/derivations/image/original/eyJpZCI6ImU0MGFkZGRhMWU5YTdlOTJkOTZkZDQ2OWI3OTJjM2UzLmpwZyIsInN0b3JhZ2UiOiJjYWNoZSJ9?signature=097f84ff6d04c4e19a142fad96d460c5bfa2eb3bb49305c421f029ec0b42118b',
             tags: ['web']
         },
     ];
@@ -160,4 +160,5 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialize
     renderProjects();
 });
+
 
