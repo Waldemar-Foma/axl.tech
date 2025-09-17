@@ -15,27 +15,29 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Project data
     const projectsData = [
-        {
-            title: 'SkillScout — сервис по подбору кандидатов на вакансию по типу личности',
-            titleEn: 'SkillScout — candidate matching service based on personality type',
-            category: 'Веб-разработка / HR-технологии', 
-            categoryEn: 'Web Development / HR Technologies',
-            description: 'Автоматизированный сервис для подбора кандидатов на вакансии с учетом их психологического профиля. Интегрирует психометрические модели (Big Five, MBTI) и технологии анализа данных для повышения эффективности рекрутинга.',
-            descriptionEn: 'Automated service for candidate matching based on psychological profiling. Integrates psychometric models (Big Five, MBTI) and data analysis technologies to enhance recruitment efficiency.',
-            image: 'https://sun9-17.userapi.com/impg/2DAJggRJUf4eDUGe7WZiQ-j2RCVb8BguTdNYGA/EAa99hqebmY.jpg?size=1080x1440&quality=95&sign=87c1a6e9799b010a087f9788b67228df&type=album',
-            tags: ['web', 'ai', 'mobile']
-        },
-        {
-            title: 'Конструктор графов - решение для профессионалов',
-            titleEn: 'Graph Constructor - a solution for professionals',
-            category: 'Веб-разработка', 
-            categoryEn: 'Web Development',
-            description: 'Веб сервис с технологией построения графов на плоскости для профессионалов.',
-            descriptionEn: 'A web service with graph construction technology on a plane for professionals.',
-            image: 'https://cdn2.hexlet.io/derivations/image/original/eyJpZCI6ImU0MGFkZGRhMWU5YTdlOTJkOTZkZDQ2OWI3OTJjM2UzLmpwZyIsInN0b3JhZ2UiOiJjYWNoZSJ9?signature=097f84ff6d04c4e19a142fad96d460c5bfa2eb3bb49305c421f029ec0b42118b',
-            tags: ['web']
-        },
-    ];
+    {
+        title: 'SkillScout — сервис по подбору кандидатов на вакансию по типу личности',
+        titleEn: 'SkillScout — candidate matching service based on personality type',
+        category: 'Веб-разработка / HR-технологии', 
+        categoryEn: 'Web Development / HR Technologies',
+        description: 'Автоматизированный сервис для подбора кандидатов на вакансии с учетом их психологического профиля. Интегрирует психометрические модели (Big Five, MBTI) и технологии анализа данных для повышения эффективности рекрутинга.',
+        descriptionEn: 'Automated service for candidate matching based on psychological profiling. Integrates psychometric models (Big Five, MBTI) and data analysis technologies to enhance recruitment efficiency.',
+        image: 'https://sun9-17.userapi.com/impg/2DAJggRJUf4eDUGe7WZiQ-j2RCVb8BguTdNYGA/EAa99hqebmY.jpg?size=1080x1440&quality=95&sign=87c1a6e9799b010a087f9788b67228df&type=album',
+        tags: ['web', 'ai', 'mobile'],
+        url: 'https://skillscout.example.com'  // <-- добавлено
+    },
+    {
+        title: 'Конструктор графов - решение для профессионалов',
+        titleEn: 'Graph Constructor - a solution for professionals',
+        category: 'Веб-разработка', 
+        categoryEn: 'Web Development',
+        description: 'Веб сервис с технологией построения графов на плоскости для профессионалов.',
+        descriptionEn: 'A web service with graph construction technology on a plane for professionals.',
+        image: 'https://cdn2.hexlet.io/derivations/image/original/eyJpZCI6ImU0MGFkZGRhMWU5YTdlOTJkOTZkZDQ2OWI3OTJjM2UzLmpwZyIsInN0b3JhZ2UiOiJjYWNoZSJ9?signature=097f84ff6d04c4e19a142fad96d460c5bfa2eb3bb49305c421f029ec0b42118b',
+        tags: ['web'],
+        url: 'https://graphconstructor.example.com'  // <-- добавлено
+    },
+];
 
     // DOM elements
     const projectsGrid = document.querySelector('.projects-grid');
@@ -99,23 +101,24 @@ document.addEventListener('DOMContentLoaded', function() {
     function openModal(projectIndex) {
         const project = projectsData[projectIndex];
         
-        modalContent.innerHTML = `
-            <div class="modal-left">
-                <div class="modal-image" style="background-image: url('${project.image}')"></div>
-            </div>
-            <div class="modal-right">
-                <h2>${currentLang === 'en' ? project.titleEn : project.title}</h2>
-                <span class="modal-category">${currentLang === 'en' ? project.categoryEn : project.category}</span>
-                <p class="modal-description">${currentLang === 'en' ? project.descriptionEn : project.description}</p>
-                <div class="modal-tags">
-                    ${project.tags.map(tag => `<span class="tag-${tag}">${tag.toUpperCase()}</span>`).join('')}
-                </div>
-                <button class="btn modal-btn">
-                    <span class="lang-ru" style="display: ${currentLang === 'ru' ? 'inline' : 'none'}">Посетить сайт</span>
-                    <span class="lang-en" style="display: ${currentLang === 'en' ? 'inline' : 'none'}">Visit website</span>
-                </button>
-            </div>
-        `;
+       modalContent.innerHTML = `
+    <div class="modal-left">
+        <div class="modal-image" style="background-image: url('${project.image}')"></div>
+    </div>
+    <div class="modal-right">
+        <h2>${currentLang === 'en' ? project.titleEn : project.title}</h2>
+        <span class="modal-category">${currentLang === 'en' ? project.categoryEn : project.category}</span>
+        <p class="modal-description">${currentLang === 'en' ? project.descriptionEn : project.description}</p>
+        <div class="modal-tags">
+            ${project.tags.map(tag => `<span class="tag-${tag}">${tag.toUpperCase()}</span>`).join('')}
+        </div>
+        <a href="${project.url}" target="_blank" rel="noopener noreferrer" class="btn modal-btn">
+            <span class="lang-ru" style="display: ${currentLang === 'ru' ? 'inline' : 'none'}">Посетить сайт</span>
+            <span class="lang-en" style="display: ${currentLang === 'en' ? 'inline' : 'none'}">Visit website</span>
+        </a>
+    </div>
+`;
+
         
         projectModal.classList.add('active');
         document.body.style.overflow = 'hidden';
@@ -160,5 +163,6 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialize
     renderProjects();
 });
+
 
 
