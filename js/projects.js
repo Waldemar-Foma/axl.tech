@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', function() {
         descriptionEn: 'Automated service for candidate matching based on psychological profiling. Integrates psychometric models (Big Five, MBTI) and data analysis technologies to enhance recruitment efficiency.',
         image: 'https://sun9-17.userapi.com/impg/2DAJggRJUf4eDUGe7WZiQ-j2RCVb8BguTdNYGA/EAa99hqebmY.jpg?size=1080x1440&quality=95&sign=87c1a6e9799b010a087f9788b67228df&type=album',
         tags: ['web', 'ai', 'mobile'],
-        url: 'https://skillscout.example.com'  // <-- добавлено
+        url: 'https://skillscout.onrender.com/'
     },
     {
         title: 'Конструктор графов - решение для профессионалов',
@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', function() {
         descriptionEn: 'A web service with graph construction technology on a plane for professionals.',
         image: 'https://cdn2.hexlet.io/derivations/image/original/eyJpZCI6ImU0MGFkZGRhMWU5YTdlOTJkOTZkZDQ2OWI3OTJjM2UzLmpwZyIsInN0b3JhZ2UiOiJjYWNoZSJ9?signature=097f84ff6d04c4e19a142fad96d460c5bfa2eb3bb49305c421f029ec0b42118b',
         tags: ['web'],
-        url: 'https://graphconstructor.example.com'  // <-- добавлено
+        url: '../graph/index.html'
     },
 ];
 
@@ -163,6 +163,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialize
     renderProjects();
 });
+
 
 
 
