@@ -397,6 +397,11 @@ function openTeamModal(member) {
 
     modal.classList.add('show');
     document.body.style.overflow = 'hidden';
+    
+    // Добавляем класс для мобильных устройств
+    if (window.innerWidth <= 768) {
+        modal.classList.add('mobile-modal');
+    }
 }
 
 function closeModal() {
@@ -527,3 +532,4 @@ if (typeof particlesJS !== 'undefined' && document.getElementById('particles-js'
 }
 
 let animationFrame = 0;
+
