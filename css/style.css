@@ -1632,6 +1632,26 @@ body {
   }
 }
 
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideInUp {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
 /* Apply animations to elements */
 .team-member {
   animation: fadeInUp 0.6s ease-out;
@@ -1642,7 +1662,127 @@ body {
 }
 
 .modal-content {
-  animation: scaleIn 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  animation: scaleIn 0.3s ease-out;
+}
+
+/* Мобильная адаптация модальных окон */
+@media (max-width: 768px) {
+  .modal {
+    padding: 10px;
+    align-items: flex-start;
+  }
+  
+  .modal-content {
+    margin: 20px auto;
+    width: 95%;
+    max-height: 90vh;
+    overflow-y: auto;
+    border-radius: 12px;
+    animation: slideInUp 0.3s ease-out;
+  }
+  
+  .team-modal .modal-content {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    max-height: 100vh;
+    border-radius: 0;
+  }
+  
+  .member-modal-content {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 15px;
+  }
+  
+  .modal-member-photo {
+    height: 200px;
+    max-width: 200px;
+    margin: 0 auto;
+  }
+  
+  .modal-member-name {
+    font-size: 1.5rem;
+    text-align: center;
+  }
+  
+  .modal-member-role {
+    text-align: center;
+    font-size: 1rem;
+  }
+  
+  .modal-skills-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+  
+  .modal-actions {
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .close-modal {
+    top: 15px;
+    right: 15px;
+    font-size: 1.8rem;
+    z-index: 1001;
+    background: rgba(0,0,0,0.5);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+  }
+}
+
+/* Улучшение отображения на очень маленьких экранах */
+@media (max-width: 480px) {
+  .modal-content {
+    padding: 15px;
+    margin: 10px auto;
+    width: 95%;
+  }
+  
+  .member-modal-content {
+    padding: 10px;
+    gap: 15px;
+  }
+  
+  .modal-member-photo {
+    height: 150px;
+    max-width: 150px;
+  }
+  
+  .modal-member-name {
+    font-size: 1.3rem;
+  }
+  
+  .modal-skill-category {
+    padding: 12px;
+  }
+  
+  .modal-skill-title {
+    font-size: 0.9rem;
+  }
+  
+  .modal-skill-item {
+    font-size: 0.85rem;
+  }
+  
+  .btn-learn-more {
+    padding: 10px 20px;
+    font-size: 0.85rem;
+  }
+}
+
+/* Предотвращение скроллинга тела при открытой модалке */
+body.modal-open {
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+  height: 100%;
 }
 
 /* Enhanced responsive design for all devices */
@@ -1831,136 +1971,6 @@ body {
     .team-member {
         flex: 0 0 calc(50% - 15px);
     }
-}
-
-@media (min-width: 768px) {
-    .team-carousel-container {
-        margin: 0 -20px;
-        padding: 0 20px;
-    }
-    
-    .team-member {
-        flex: 0 0 calc(33.333% - 20px);
-    }
-    
-    .carousel-btn {
-        width: 50px;
-        height: 50px;
-        font-size: 18px;
-    }
-    
-    .prev-btn {
-        left: -10px;
-    }
-    
-    .next-btn {
-        right: -10px;
-    }
-}
-
-@media (min-width: 1024px) {
-    .team-carousel-container {
-        margin: 0;
-        padding: 0;
-    }
-    
-    .team-member {
-        flex: 0 0 calc(25% - 20px);
-    }
-    
-    .carousel-btn {
-        width: 56px;
-        height: 56px;
-        font-size: 20px;
-    }
-    
-    .prev-btn {
-        left: -25px;
-    }
-    
-    .next-btn {
-        right: -25px;
-    }
-}
-/* Alternative more complex floating animation */
-.floating-image {
-    animation: complexFloat 8s ease-in-out infinite;
-}
-
-@keyframes complexFloat {
-    0% {
-        transform: 
-            translateY(0px) 
-            rotate(0deg) 
-            scale(1);
-    }
-    25% {
-        transform: 
-            translateY(-12px) 
-            rotate(2deg) 
-            scale(1.02);
-    }
-    50% {
-        transform: 
-            translateY(-8px) 
-            rotate(-1deg) 
-            scale(1.01);
-    }
-    75% {
-        transform: 
-            translateY(-15px) 
-            rotate(1deg) 
-            scale(1.03);
-    }
-    100% {
-        transform: 
-            translateY(0px) 
-            rotate(0deg) 
-            scale(1);
-    }
-}
-/* Скрыть кнопки на очень маленьких экранах */
-@media (max-width: 350px) {
-    .carousel-btn {
-        display: none;
-    }
-}
-
-/* Анимации для плавного перехода */
-@keyframes slideIn {
-    from {
-        opacity: 0;
-        transform: translateX(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
-.team-member {
-    animation: slideIn 0.5s ease-out;
-}
-
-/* Touch improvements for mobile */
-.team-carousel {
-    -webkit-overflow-scrolling: touch;
-    scroll-snap-type: x mandatory;
-    scroll-behavior: smooth;
-}
-
-.team-grid {
-    scroll-snap-type: x mandatory;
-}
-
-/* Hide scrollbar but keep functionality */
-.team-carousel::-webkit-scrollbar {
-    display: none;
-}
-
-.team-carousel {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
 }
 
 /* Medium mobile devices (481px - 640px) */
@@ -2355,4 +2365,44 @@ body {
     box-shadow: none !important;
     border: 1px solid #ccc !important;
   }
+}
+
+/* Fix for touch devices */
+@media (hover: none) and (pointer: coarse) {
+  .team-member:hover {
+    transform: none;
+  }
+  
+  .carousel-btn:hover {
+    transform: none;
+  }
+  
+  .btn:hover {
+    transform: none;
+  }
+}
+
+/* Smooth transitions for all interactive elements */
+.team-member,
+.carousel-btn,
+.btn,
+.modal-content,
+.filter-btn,
+.price-tab {
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Performance optimizations */
+.team-member,
+.carousel-btn,
+.modal-content {
+  will-change: transform, opacity;
+}
+
+/* Backface visibility fix for smoother animations */
+.team-member,
+.modal-content,
+.carousel-btn {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
