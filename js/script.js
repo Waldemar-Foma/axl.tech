@@ -406,9 +406,10 @@ function openTeamModal(member) {
 
 function closeModal() {
     document.querySelectorAll('.modal').forEach(modal => {
-        modal.classList.remove('show');
+        modal.classList.remove('show', 'mobile-modal');
     });
     document.body.style.overflow = 'auto';
+    document.body.classList.remove('modal-open');
 }
 
 // Initialize Everything
@@ -442,14 +443,19 @@ document.addEventListener('DOMContentLoaded', function() {
         closeBtn.addEventListener('click', closeModal);
     });
     
-    // Close modal when clicking outside
     document.querySelectorAll('.modal').forEach(modal => {
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) {
-                closeModal();
-            }
-        });
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal || e.target.classList.contains('close-modal')) {
+            closeModal();
+        }
     });
+});
+
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+        closeModal();
+    }
+});
     
     // Contact modal
     const contactModalBtn = document.getElementById('contactModalBtn');
@@ -532,4 +538,5 @@ if (typeof particlesJS !== 'undefined' && document.getElementById('particles-js'
 }
 
 let animationFrame = 0;
+
 
