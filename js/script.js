@@ -1,4 +1,3 @@
-// Cookie functions
 function setCookie(name, value, days = 365) {
     const date = new Date();
     date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
@@ -566,3 +565,4 @@ function limitMaxWidth() {
 // Вызываем при загрузке и ресайзе
 window.addEventListener('load', limitMaxWidth);
 window.addEventListener('resize', limitMaxWidth);
+
