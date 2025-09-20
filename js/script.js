@@ -1,3 +1,4 @@
+// Cookie functions
 function setCookie(name, value, days = 365) {
     const date = new Date();
     date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
@@ -99,12 +100,12 @@ const teamMembers = [
         bioEn: "Ensures stable operation of all platform services. Not only from the beginning to the end of its implementation, but also during its operation.",
         photo: "../images/alex.jpg",
         skills: {
-                "Backend": ["Python", "FastAPI", "Django", "Node.js"],
-                "Базы данных": ["SQL", "PostgreSQL", "MySQL", "Redis"],
-                "Инфраструктура": ["Docker", "Git", "Bash", "Deployment"],
-                "Разработка": ["Frontend", "HTML5", "CSS3", "Android", "Kotlin", "Qt", "Telegram Bots (Aiogram)", "API Development"],
-                "Анализ данных": ["Pandas", "Data Analysis"],
-                "Языки": ["English B2"]
+            "Backend": ["Python", "FastAPI", "Django", "Node.js"],
+            "Базы данных": ["SQL", "PostgreSQL", "MySQL", "Redis"],
+            "Инфраструктура": ["Docker", "Git", "Bash", "Deployment"],
+            "Разработка": ["Frontend", "HTML5", "CSS3", "Android", "Kotlin", "Qt", "Telegram Bots (Aiogram)", "API Development"],
+            "Анализ данных": ["Pandas", "Data Analysis"],
+            "Языки": ["English B2"]
         },
         personalPage: "team/alex.html"
     },
@@ -129,18 +130,14 @@ const teamMembers = [
 
 // Team Carousel Variables
 let currentSlide = 0;
-let isDragging = false;
-let startPos = 0;
-let currentTranslate = 0;
-let prevTranslate = 0;
 let slidesToShow = 1;
-let carousel;
+let slideWidth = 0;
+const gap = 20;
 
-// Team Carousel with Touch Support
+// Team Carousel
 function initTeamCarousel() {
     const teamGrid = document.querySelector('.team-grid');
-    carousel = document.querySelector('.team-carousel');
-    if (!teamGrid || !carousel) return;
+    if (!teamGrid) return;
 
     // Очищаем и создаем карточки
     teamGrid.innerHTML = '';
@@ -152,7 +149,6 @@ function initTeamCarousel() {
     // Инициализируем карусель
     updateSlidesToShow();
     setupCarouselNavigation();
-    setupTouchEvents();
     updateCarousel();
 }
 
@@ -180,10 +176,7 @@ function createMemberCard(member, index) {
     `;
 
     memberCard.addEventListener('click', (e) => {
-        // Предотвращаем открытие модалки при свайпе
-        if (!isDragging) {
-            openTeamModal(member);
-        }
+        openTeamModal(member);
     });
 
     return memberCard;
@@ -191,106 +184,69 @@ function createMemberCard(member, index) {
 
 function updateSlidesToShow() {
     const width = window.innerWidth;
-    if (width < 480) slidesToShow = 1;
-    else if (width < 768) slidesToShow = 2;
-    else if (width < 1024) slidesToShow = 3;
-    else slidesToShow = 4;
+    let newSlidesToShow;
+    
+    if (width < 480) newSlidesToShow = 1;
+    else if (width < 768) newSlidesToShow = 2;
+    else if (width < 1024) newSlidesToShow = 3;
+    else newSlidesToShow = 4;
+    
+    if (newSlidesToShow !== slidesToShow) {
+        slidesToShow = newSlidesToShow;
+        updateCarousel();
+    }
+}
+
+function updateCarousel() {
+    const teamGrid = document.querySelector('.team-grid');
+    if (!teamGrid || teamGrid.children.length === 0) return;
+
+    // Рассчитываем ширину одного слайда
+    const firstSlide = teamGrid.children[0];
+    slideWidth = firstSlide.offsetWidth + gap;
+    
+    // Рассчитываем максимальный слайд
+    const maxSlide = Math.max(0, teamMembers.length - slidesToShow);
+    currentSlide = Math.min(currentSlide, maxSlide);
+    
+    // Устанавливаем позицию
+    setSliderPosition();
+    updateNavigation();
+    updateDots();
+}
+
+function setSliderPosition() {
+    const teamGrid = document.querySelector('.team-grid');
+    if (teamGrid) {
+        const translateX = -currentSlide * slideWidth;
+        teamGrid.style.transform = `translateX(${translateX}px)`;
+        teamGrid.style.transition = 'transform 0.4s ease';
+    }
+}
+
+function goToSlide(slideIndex) {
+    const maxSlide = Math.max(0, teamMembers.length - slidesToShow);
+    currentSlide = Math.max(0, Math.min(slideIndex, maxSlide));
+    updateCarousel();
 }
 
 function setupCarouselNavigation() {
     const prevBtn = document.querySelector('.prev-btn');
     const nextBtn = document.querySelector('.next-btn');
 
-    if (prevBtn) {
-        prevBtn.addEventListener('click', () => {
-            goToSlide(currentSlide - slidesToShow);
-        });
-    }
-
-    if (nextBtn) {
-        nextBtn.addEventListener('click', () => {
-            goToSlide(currentSlide + slidesToShow);
-        });
-    }
-}
-
-function setupTouchEvents() {
-    if (!carousel) return;
+    // Удаляем старые обработчики
+    const newPrevBtn = prevBtn?.cloneNode(true);
+    const newNextBtn = nextBtn?.cloneNode(true);
     
-    carousel.addEventListener('touchstart', touchStart);
-    carousel.addEventListener('touchmove', touchMove);
-    carousel.addEventListener('touchend', touchEnd);
-    
-    carousel.addEventListener('mousedown', touchStart);
-    carousel.addEventListener('mousemove', touchMove);
-    carousel.addEventListener('mouseup', touchEnd);
-    carousel.addEventListener('mouseleave', touchEnd);
-}
-
-function touchStart(e) {
-    if (e.type === 'mousedown') {
-        e.preventDefault();
+    if (prevBtn && newPrevBtn) {
+        prevBtn.parentNode.replaceChild(newPrevBtn, prevBtn);
+        newPrevBtn.addEventListener('click', () => goToSlide(currentSlide - 1));
     }
     
-    isDragging = true;
-    startPos = getPositionX(e);
-    prevTranslate = currentTranslate;
-    
-    carousel.style.cursor = 'grabbing';
-    carousel.style.transition = 'none';
-    
-    cancelAnimationFrame(animationFrame);
-}
-
-function touchMove(e) {
-    if (!isDragging) return;
-    
-    const currentPosition = getPositionX(e);
-    currentTranslate = prevTranslate + currentPosition - startPos;
-    
-    setSliderPosition();
-}
-
-function touchEnd() {
-    isDragging = false;
-    carousel.style.cursor = 'grab';
-    carousel.style.transition = 'transform 0.4s ease';
-    
-    const movedBy = currentTranslate - prevTranslate;
-    
-    if (movedBy < -50) {
-        goToSlide(currentSlide + 1);
-    } else if (movedBy > 50) {
-        goToSlide(currentSlide - 1);
-    } else {
-        setSliderPosition();
+    if (nextBtn && newNextBtn) {
+        nextBtn.parentNode.replaceChild(newNextBtn, nextBtn);
+        newNextBtn.addEventListener('click', () => goToSlide(currentSlide + 1));
     }
-}
-
-function getPositionX(e) {
-    return e.type.includes('mouse') ? e.pageX : e.touches[0].clientX;
-}
-
-function setSliderPosition() {
-    const teamGrid = document.querySelector('.team-grid');
-    if (teamGrid) {
-        teamGrid.style.transform = `translateX(${currentTranslate}px)`;
-    }
-}
-
-function goToSlide(slideIndex) {
-    const teamGrid = document.querySelector('.team-grid');
-    if (!teamGrid) return;
-
-    const maxSlide = Math.max(0, teamMembers.length - slidesToShow);
-    currentSlide = Math.max(0, Math.min(slideIndex, maxSlide));
-    
-    const slideWidth = teamGrid.offsetWidth / teamMembers.length;
-    currentTranslate = -currentSlide * slideWidth * slidesToShow;
-    
-    setSliderPosition();
-    updateNavigation();
-    updateDots();
 }
 
 function updateNavigation() {
@@ -335,12 +291,6 @@ function updateDots() {
     });
 }
 
-function updateCarousel() {
-    updateSlidesToShow();
-    goToSlide(currentSlide);
-    createDots();
-}
-
 // Render Team with Language Support
 function renderTeam(lang) {
     const teamGrid = document.querySelector('.team-grid');
@@ -352,6 +302,9 @@ function renderTeam(lang) {
         teamGrid.appendChild(memberCard);
     });
     
+    // Полная переинициализация
+    updateSlidesToShow();
+    setupCarouselNavigation();
     updateCarousel();
 }
 
@@ -397,19 +350,37 @@ function openTeamModal(member) {
 
     modal.classList.add('show');
     document.body.style.overflow = 'hidden';
-    
-    // Добавляем класс для мобильных устройств
-    if (window.innerWidth <= 768) {
-        modal.classList.add('mobile-modal');
-    }
+    document.body.classList.add('modal-open');
 }
 
+// Modal functions
 function closeModal() {
     document.querySelectorAll('.modal').forEach(modal => {
-        modal.classList.remove('show', 'mobile-modal');
+        modal.classList.remove('show');
     });
     document.body.style.overflow = 'auto';
     document.body.classList.remove('modal-open');
+}
+
+function setupModalHandlers() {
+    // Закрытие модалок
+    document.querySelectorAll('.close-modal').forEach(closeBtn => {
+        closeBtn.addEventListener('click', closeModal);
+    });
+
+    document.querySelectorAll('.modal').forEach(modal => {
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            closeModal();
+        }
+    });
 }
 
 // Initialize Everything
@@ -423,6 +394,9 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Initialize team carousel
     initTeamCarousel();
+    
+    // Setup modal handlers
+    setupModalHandlers();
     
     // Theme switcher
     document.querySelectorAll('.theme-btn').forEach(button => {
@@ -438,38 +412,20 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Modal close events
-    document.querySelectorAll('.close-modal').forEach(closeBtn => {
-        closeBtn.addEventListener('click', closeModal);
-    });
-    
-    document.querySelectorAll('.modal').forEach(modal => {
-    modal.addEventListener('click', (e) => {
-        if (e.target === modal || e.target.classList.contains('close-modal')) {
-            closeModal();
-        }
-    });
-});
-
-document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') {
-        closeModal();
-    }
-});
-    
     // Contact modal
     const contactModalBtn = document.getElementById('contactModalBtn');
     if (contactModalBtn) {
         contactModalBtn.addEventListener('click', function() {
             const contactModal = document.getElementById('contactModal');
             if (contactModal) {
-                contactModal.style.display = 'block';
+                contactModal.classList.add('show');
                 document.body.style.overflow = 'hidden';
+                document.body.classList.add('modal-open');
             }
         });
     }
     
-    // Keyboard navigation
+    // Keyboard navigation for carousel
     document.addEventListener('keydown', (e) => {
         if (e.key === 'ArrowLeft') goToSlide(currentSlide - 1);
         else if (e.key === 'ArrowRight') goToSlide(currentSlide + 1);
@@ -481,12 +437,8 @@ document.addEventListener('keydown', (e) => {
     window.addEventListener('resize', function() {
         clearTimeout(resizeTimeout);
         resizeTimeout = setTimeout(() => {
-            const oldSlidesToShow = slidesToShow;
             updateSlidesToShow();
-            
-            if (oldSlidesToShow !== slidesToShow) {
-                updateCarousel();
-            }
+            updateCarousel();
         }, 250);
     });
 
@@ -538,5 +490,3 @@ if (typeof particlesJS !== 'undefined' && document.getElementById('particles-js'
 }
 
 let animationFrame = 0;
-
-
