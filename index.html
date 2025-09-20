@@ -13,26 +13,16 @@
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 </head>
 <body>
-    <!-- Preloader -->
     <div class="preloader">
-    <div class="preloader-inner">
-        <div class="loading-ring"></div>
-        <div class="loading-ring"></div>
-        <div class="loading-ring"></div>
-        
-        <div class="axl-logo">
-            <div class="axl-letter">A</div>
-            <div class="axl-letter">X</div>
-            <div class="axl-letter">L</div>
-        </div>
-        
-        <div class="loading-dots">
-            <div class="loading-dot"></div>
-            <div class="loading-dot"></div>
-            <div class="loading-dot"></div>
+        <div class="chip-core">
+            <div class="axl">AXL</div>
+            <div class="lines">
+                <span></span><span></span><span></span><span></span>
+                <span></span><span></span><span></span><span></span>
+            </div>
         </div>
     </div>
-</div>
+
     <!-- Compact Menu -->
     <div class="menu-wrap">
         <input type="checkbox" class="toggler" />
@@ -127,7 +117,7 @@
                             Мы — команда IT-энтузиастов, которая превращает сложные задачи
                             в элегантные решения. Нас объединяет страсть к технологиям,
                             гибкий подход и желание создавать продукты, которые работают
-                            на результат. У нас есть эксперты в fullstack-разработке,
+                            на результат. Нас есть эксперты в fullstack-разработке,
                             DevOps, мобильных приложениях, машинном обучении и блокчейне,
                             а это значит, что мы можем взяться за проект любой сложности —
                             от стартапа до корпоративной системы. Мы не просто пишем код,
@@ -185,49 +175,74 @@
                 </div>
             </div>
         </section>
+
+        <!-- Team Section -->
         <section class="section team-section">
             <div class="container">
                 <h2 class="section-title lang-ru">Наши специалисты</h2>
                 <h2 class="section-title lang-en">Our Specialists</h2>
 
-                <div class="team-grid">
-                    <!-- Team_подгрузка из JS -->
+                <div class="team-carousel-wrapper">
+                    <div class="team-carousel-container">
+                        <div class="team-carousel">
+                            <div class="team-grid">
+                                <!-- Team_подгрузка из JS -->
+                            </div>
+                        </div>
+                        
+                        <button class="carousel-btn prev-btn" aria-label="Предыдущий слайд">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <button class="carousel-btn next-btn" aria-label="Следующий слайд">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+
                 </div>
 
                 <div class="values-grid">
                     <div class="value-card">
                         <div class="value-icon"><i class="fas fa-lightbulb"></i></div>
-                            <div class="value-content">
-                                <h3 class="lang-ru">Инновации</h3>
-                                <h3 class="lang-en">Innovation</h3>
-                                    <p class="lang-ru">Постоянно исследуем новые технологии</p>
-                                    <p class="lang-en">Constantly exploring new technologies</p>
-                            </div>
+                        <div class="value-content">
+                            <h3 class="lang-ru">Инновации</h3>
+                            <h3 class="lang-en">Innovation</h3>
+                            <p class="lang-ru">Постоянно исследуем новые технологии</p>
+                            <p class="lang-en">Constantly exploring new technologies</p>
                         </div>
+                    </div>
                     <div class="value-card">
                         <div class="value-icon"><i class="fas fa-handshake"></i></div>
-                            <div class="value-content">
-                                <h3 class="lang-ru">Надежность</h3>
-                                <h3 class="lang-en">Reliability</h3>
-                                <p class="lang-ru">Выполняем обещания и соблюдаем сроки</p>
-                                <p class="lang-en">We keep promises and meet deadlines</p>
-                                </div>
+                        <div class="value-content">
+                            <h3 class="lang-ru">Надежность</h3>
+                            <h3 class="lang-en">Reliability</h3>
+                            <p class="lang-ru">Выполняем обещания и соблюдаем сроки</p>
+                            <p class="lang-en">We keep promises and meet deadlines</p>
                         </div>
+                    </div>
                     <div class="value-card">
                         <div class="value-icon"><i class="fas fa-heart"></i></div>
-                            <div class="value-content">
-                                <h3 class="lang-ru">Страсть</h3>
-                                <h3 class="lang-en">Passion</h3>
-                                <p class="lang-ru">Любим то, что делаем</p>
-                                <p class="lang-en">We love what we do</p>
-                            </div>
+                        <div class="value-content">
+                            <h3 class="lang-ru">Страсть</h3>
+                            <h3 class="lang-en">Passion</h3>
+                            <p class="lang-ru">Любим то, что делаем</p>
+                            <p class="lang-en">We love what we do</p>
                         </div>
                     </div>
                 </div>
+            </div>
         </section>
 
-        <!-- Join Us Section -->
-        <!-- Join Us Section -->
+        <!-- Team Member Modal -->
+        <div id="teamMemberModal" class="modal team-modal">
+            <div class="modal-content">
+                <span class="close-modal">&times;</span>
+                <div class="modal-body" id="teamMemberModalBody">
+                    <!-- Content will be loaded dynamically -->
+                </div>
+            </div>
+        </div>
+
+<!-- Join Us Section -->
 <section class="section join-section">
     <div class="container">
         <div class="join-card">
@@ -273,46 +288,46 @@
                 </div>
             </div>
             <div class="join-image">
-                <img src="images/join-team.png" alt="Join our team" class="join-img">
+                <img src="images/join-team.png" alt="Join our team" class="join-img floating-image">
             </div>
         </div>
     </div>
 </section>
 
-<!-- Contact Modal -->
-<div id="contactModal" class="modal">
-    <div class="modal-content">
-        <span class="close-modal">&times;</span>
-        <div class="modal-header">
-            <h3>
-                <span class="lang-ru">Как с нами связаться</span>
-                <span class="lang-en">How to contact us</span>
-            </h3>
-            <p class="modal-subtitle">
-                <span class="lang-ru">Выберите удобный способ</span>
-                <span class="lang-en">Choose convenient way</span>
-            </p>
-        </div>
-        <div class="contact-methods">
-            <a href="https://t.me/AXL_business" class="contact-method telegram">
-                <i class="fab fa-telegram"></i>
-                <span>Telegram</span>
-            </a>
-            <a href="https://vk.com/axl_invincible" class="contact-method vk">
-                <i class="fab fa-vk"></i>
-                <span>VKontakte</span>
-            </a>
-            <a href="mailto:axl.team@example.com" class="contact-method email">
-                <i class="fas fa-envelope"></i>
-                <span>Email</span>
-            </a>
-            <div class="contact-method phone">
-                <i class="fas fa-phone"></i>
-                <span>+7 (995) 055-35-48</span>
+        <!-- Contact Modal -->
+        <div id="contactModal" class="modal">
+            <div class="modal-content">
+                <span class="close-modal">&times;</span>
+                <div class="modal-header">
+                    <h3>
+                        <span class="lang-ru">Как с нами связаться</span>
+                        <span class="lang-en">How to contact us</span>
+                    </h3>
+                    <p class="modal-subtitle">
+                        <span class="lang-ru">Выберите удобный способ</span>
+                        <span class="lang-en">Choose convenient way</span>
+                    </p>
+                </div>
+                <div class="contact-methods">
+                    <a href="https://t.me/AXL_business" class="contact-method telegram">
+                        <i class="fab fa-telegram"></i>
+                        <span>Telegram</span>
+                    </a>
+                    <a href="https://vk.com/axl_invincible" class="contact-method vk">
+                        <i class="fab fa-vk"></i>
+                        <span>VKontakte</span>
+                    </a>
+                    <a href="mailto:axl.team@example.com" class="contact-method email">
+                        <i class="fas fa-envelope"></i>
+                        <span>Email</span>
+                    </a>
+                    <div class="contact-method phone">
+                        <i class="fas fa-phone"></i>
+                        <span>+7 (995) 055-35-48</span>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
         <!-- CTA Section -->
         <section class="section cta-section">
@@ -326,6 +341,7 @@
             </div>
         </section>
     </main>
+
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
@@ -346,6 +362,7 @@
             </div>
         </div>
     </footer>
+
     <script src="js/script.js"></script>
     <script src="js/menu.js"></script>
 </body>
