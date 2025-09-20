@@ -1322,8 +1322,6 @@ body {
 
 .team-carousel {
     overflow: hidden;
-    cursor: grab;
-    user-select: none;
 }
 
 .team-carousel:active {
@@ -1332,9 +1330,9 @@ body {
 
 .team-grid {
     display: flex;
-    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    will-change: transform;
     gap: 20px;
+    transition: transform 0.4s ease;
+    will-change: transform;
     padding: 10px 0;
 }
 
@@ -1344,7 +1342,6 @@ body {
     scroll-snap-align: start;
 }
 
-/* Кнопки навигации */
 .carousel-btn {
     position: absolute;
     top: 50%;
@@ -1363,11 +1360,21 @@ body {
     font-size: 16px;
     transition: all 0.3s ease;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    opacity: 0.9;
 }
 
 .carousel-btn:hover {
     opacity: 1;
+    transform: translateY(-50%) scale(1.1);
+    background: var(--primary-dark);
+}
+
+.carousel-btn:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+    transform: translateY(-50%);
+}
+
+.carousel-btn:hover:not(:disabled) {
     transform: translateY(-50%) scale(1.1);
     background: var(--primary-dark);
 }
@@ -1671,7 +1678,26 @@ body {
     padding: 10px;
     align-items: flex-start;
   }
-  
+  .about-image,
+    .contact-image,
+    .join-image {
+        display: none;
+    }
+    
+    .about-grid,
+    .contact-grid,
+    .join-card {
+        grid-template-columns: 1fr !important;
+    }
+    
+    /* Исключение для team.jpg - оставляем видимым */
+    .team-photo {
+        display: block;
+        width: 100%;
+        max-width: 300px;
+        margin: 0 auto;
+    }
+
   .modal-content {
     margin: 20px auto;
     width: 95%;
@@ -1775,6 +1801,9 @@ body {
     padding: 10px 20px;
     font-size: 0.85rem;
   }
+     .team-photo {
+        max-width: 250px;
+    }
 }
 
 /* Предотвращение скроллинга тела при открытой модалке */
@@ -1788,6 +1817,12 @@ body.modal-open {
 /* Enhanced responsive design for all devices */
 
 /* 4K and large screens (1921px and above) */
+@media (min-width: 1024px) {
+    .team-member {
+        flex: 0 0 calc(25% - 20px);
+    }
+}
+
 @media (min-width: 1921px) {
   .container {
     max-width: 1600px;
@@ -1970,6 +2005,12 @@ body.modal-open {
 @media (min-width: 480px) {
     .team-member {
         flex: 0 0 calc(50% - 15px);
+    }
+}
+
+@media (min-width: 768px) {
+    .team-member {
+        flex: 0 0 calc(33.333% - 20px);
     }
 }
 
@@ -2405,4 +2446,42 @@ body.modal-open {
 .carousel-btn {
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
+}
+
+/* Alternative more complex floating animation */
+.floating-image {
+    animation: complexFloat 8s ease-in-out infinite;
+}
+
+@keyframes complexFloat {
+    0% {
+        transform: 
+            translateY(0px) 
+            rotate(0deg) 
+            scale(1);
+    }
+    25% {
+        transform: 
+            translateY(-12px) 
+            rotate(2deg) 
+            scale(1.02);
+    }
+    50% {
+        transform: 
+            translateY(-8px) 
+            rotate(-1deg) 
+            scale(1.01);
+    }
+    75% {
+        transform: 
+            translateY(-15px) 
+            rotate(1deg) 
+            scale(1.03);
+    }
+    100% {
+        transform: 
+            translateY(0px) 
+            rotate(0deg) 
+            scale(1);
+    }
 }
