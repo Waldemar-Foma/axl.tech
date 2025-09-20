@@ -1,3 +1,4 @@
+// Cookie functions
 function setCookie(name, value, days = 365) {
     const date = new Date();
     date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
@@ -489,80 +490,3 @@ if (typeof particlesJS !== 'undefined' && document.getElementById('particles-js'
 }
 
 let animationFrame = 0;
-
-
-// Функция для предотвращения горизонтального скролла
-function preventHorizontalScroll() {
-    // Запрещаем горизонтальный скролл колесом мыши
-    document.addEventListener('wheel', function(e) {
-        if (e.deltaX !== 0) {
-            e.preventDefault();
-        }
-    }, { passive: false });
-
-    // Запрещаем горизонтальный скролл на touch-устройствах
-    document.addEventListener('touchmove', function(e) {
-        const touch = e.touches[0];
-        const startX = touch.pageX;
-        
-        // Если движение преимущественно горизонтальное - предотвращаем
-        if (Math.abs(e.touches[0].pageX - startX) > Math.abs(e.touches[0].pageY - startY)) {
-            e.preventDefault();
-        }
-    }, { passive: false });
-
-    // Проверяем и исправляем горизонтальный скролл при ресайзе
-    function checkHorizontalScroll() {
-        if (document.documentElement.scrollWidth > window.innerWidth) {
-            // Если есть горизонтальный скролл, ищем и исправляем проблемные элементы
-            document.querySelectorAll('*').forEach(el => {
-                if (el.offsetWidth > window.innerWidth) {
-                    el.style.maxWidth = '100%';
-                    el.style.overflowX = 'hidden';
-                }
-            });
-        }
-    }
-
-    // Проверяем при загрузке и при ресайзе
-    window.addEventListener('load', checkHorizontalScroll);
-    window.addEventListener('resize', checkHorizontalScroll);
-}
-
-// Вызываем функцию после загрузки DOM
-document.addEventListener('DOMContentLoaded', function() {
-    preventHorizontalScroll();
-    
-    // Дополнительная проверка после полной загрузки страницы
-    window.addEventListener('load', function() {
-        // Принудительно устанавливаем правильную ширину
-        document.documentElement.style.width = '100%';
-        document.body.style.width = '100%';
-        
-        // Убеждаемся, что нет горизонтального скролла
-        if (document.documentElement.scrollWidth > window.innerWidth) {
-            document.body.style.overflowX = 'hidden';
-        }
-    });
-});
-
-// Функция для ограничения максимальной ширины на больших экранах
-function limitMaxWidth() {
-    const maxWidth = 1200; // Максимальная ширина в пикселях
-    const screenWidth = window.innerWidth;
-    
-    if (screenWidth > maxWidth) {
-        document.body.style.maxWidth = maxWidth + 'px';
-        document.body.style.margin = '0 auto';
-        document.body.style.boxShadow = '0 0 20px rgba(0,0,0,0.1)';
-    } else {
-        document.body.style.maxWidth = '100%';
-        document.body.style.margin = '0';
-        document.body.style.boxShadow = 'none';
-    }
-}
-
-// Вызываем при загрузке и ресайзе
-window.addEventListener('load', limitMaxWidth);
-window.addEventListener('resize', limitMaxWidth);
-
