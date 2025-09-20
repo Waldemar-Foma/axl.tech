@@ -1,3 +1,127 @@
+/* Запрет горизонтальной прокрутки и ограничение по ширине */
+html, body {
+    width: 100%;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Основной контейнер для ограничения максимальной ширины */
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Предотвращение выхода элементов за пределы */
+img, video, iframe, table, canvas, pre, code {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Запрет горизонтального скролла для всех секций */
+.section, .hero, .footer, .price-section, .projects-section {
+    overflow-x: hidden;
+}
+
+/* Мобильная адаптация */
+@media (max-width: 768px) {
+    .container {
+        padding: 0 15px;
+    }
+    
+    /* Дополнительные меры для мобильных устройств */
+    body {
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    /* Предотвращение масштабирования на iOS */
+    textarea, input, select {
+        font-size: 16px !important; /* Предотвращает масштабирование на iOS */
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 0 12px;
+    }
+    
+    /* Еще более строгие ограничения для маленьких экранов */
+    body {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+    }
+    
+    .main-content {
+        width: 100%;
+        height: 100%;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+}
+
+/* Запрет горизонтального скролла для специфических элементов */
+.team-carousel-container,
+.projects-grid,
+.price-table-container {
+    overflow-x: hidden;
+}
+
+/* Фикс для модальных окон на мобильных */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100vw;
+    height: 100vh;
+}
+
+.modal-content {
+    max-width: 95vw;
+    margin: 5vh auto;
+}
+
+/* Предотвращение выхода текста за пределы */
+p, h1, h2, h3, h4, h5, h6, li, td, th {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+/* Фикс для flex-контейнеров */
+.flex-container {
+    flex-wrap: wrap;
+}
+
+/* Запрет горизонтального скролла на touch-устройствах */
+@media (hover: none) and (pointer: coarse) {
+    body {
+        overscroll-behavior-x: none;
+    }
+}
+
+/* Дополнительная защита от горизонтального скролла */
+* {
+    box-sizing: border-box;
+    max-width: 100%;
+}
+
+/* Фикс для карусели на мобильных */
+.team-carousel {
+    touch-action: pan-y; /* Разрешаем только вертикальные жесты */
+}
+
+/* Предотвращение появления горизонтального скролла */
+body.modal-open {
+    position: fixed;
+    width: 100%;
+}
+
+
+
 :root {
   --primary: #FF6B00;
   --primary-rgb: 255, 107, 0;
