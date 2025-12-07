@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Спасибо! | AXL Team</title>
+    <link rel="stylesheet" href="css/menu.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/contact.css">
+    <link rel="icon" type="image/png" href="images/logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <style>
+        .thank-you-container {
+            min-height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+        }
+        
+        .thank-you-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 50px 40px;
+            text-align: center;
+            max-width: 600px;
+            width: 100%;
+            border: 1px solid var(--border);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        .success-icon {
+            font-size: 5rem;
+            color: #2ecc71;
+            margin-bottom: 30px;
+            animation: bounce 1s ease;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+            40% {transform: translateY(-20px);}
+            60% {transform: translateY(-10px);}
+        }
+        
+        .thank-you-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+        
+        .contact-methods {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border);
+        }
+        
+        .contact-methods a {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin: 0 10px;
+            color: var(--primary);
+            text-decoration: none;
+            padding: 8px 15px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .contact-methods a:hover {
+            background: rgba(var(--primary-rgb), 0.1);
+        }
+        
+        @media (max-width: 768px) {
+            .thank-you-card {
+                padding: 30px 20px;
+            }
+            
+            .thank-you-buttons {
+                flex-direction: column;
+            }
+            
+            .thank-you-buttons .btn {
+                width: 100%;
+            }
+            
+            .contact-methods {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Preloader -->
+    <div class="preloader">
+        <div class="chip-core">
+            <div class="axl">AXL</div>
+            <div class="lines">
+                <span></span><span></span><span></span><span></span>
+                <span></span><span></span><span></span><span></span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Compact Menu -->
+    <div class="menu-wrap">
+        <input type="checkbox" class="toggler" />
+        <div class="hamburger"><div></div></div>
+        <div class="menu">
+            <div class="menu-content">
+                <button class="menu-close" aria-label="Закрыть меню">
+                    <i class="fas fa-times"></i>
+                </button>
+                <ul>
+                    <li><a href="index.html"><i class="fas fa-home"></i> Главная</a></li>
+                    <li><a href="index.html#about"><i class="fas fa-users"></i> О команде</a></li>
+                    <li><a href="projects.html"><i class="fas fa-code"></i> Проекты</a></li>
+                    <li><a href="price.html"><i class="fas fa-tags"></i> Прайс-лист</a></li>
+                    <li><a href="contact.html"><i class="fas fa-envelope"></i> Контакты</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <main class="main-content">
+        <div class="container">
+            <div class="thank-you-container">
+                <div class="thank-you-card">
+                    <div class="success-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    
+                    <h1 style="font-size: 2.5rem; margin-bottom: 15px; color: var(--text);">
+                        Спасибо за вашу заявку! ✨
+                    </h1>
+                    
+                    <p style="font-size: 1.1rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 10px;">
+                        Ваше сообщение успешно отправлено. Мы получили его и свяжемся с вами в течение 24 часов.
+                    </p>
+                    
+                    <p style="color: var(--text-secondary); font-size: 0.95rem; opacity: 0.8;">
+                        Мы также отправили вам подтверждение на указанный email адрес.
+                    </p>
+                    
+                    <div class="thank-you-buttons">
+                        <a href="index.html" class="btn btn-primary" style="min-width: 200px;">
+                            <i class="fas fa-home"></i> На главную
+                        </a>
+                        <a href="contact.html" class="btn btn-secondary" style="min-width: 200px;">
+                            <i class="fas fa-envelope"></i> Еще сообщение
+                        </a>
+                    </div>
+                    
+                    <div class="contact-methods">
+                        <p style="margin-bottom: 15px; color: var(--text-secondary);">
+                            Или свяжитесь с нами напрямую:
+                        </p>
+                        <div>
+                            <a href="https://t.me/axel_Invincible" target="_blank">
+                                <i class="fab fa-telegram"></i> Telegram
+                            </a>
+                            <a href="mailto:axl.tech@bk.ru">
+                                <i class="fas fa-envelope"></i> Email
+                            </a>
+                            <a href="tel:+79588563548">
+                                <i class="fas fa-phone"></i> +7 (958) 856-35-48
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">AXL Team</div>
+                <div class="footer-copy">© 2025 Все права защищены</div>
+                <div class="footer-links">
+                    <a href="other/politics.html">Политика конфиденциальности</a>
+                    <a href="other/conditions.html">Условия использования</a>
+                </div>
+                <div class="footer-social">
+                    <a href="https://github.com/Waldemar-Foma"><i class="fab fa-github"></i></a>
+                    <a href="https://vk.com/axl_invincible"><i class="fab fa-vk"></i></a>
+                    <a href="https://t.me/axel_Invincible"><i class="fab fa-telegram"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/menu.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>
