@@ -249,34 +249,59 @@ document.addEventListener('DOMContentLoaded', function() {
     const tabs = document.querySelectorAll('.price-tab');
     let currentCategory = 'development';
 
+    // Функция для получения текущего языка
+    function getCurrentLanguage() {
+        const html = document.documentElement;
+        const langAttr = html.getAttribute('lang');
+        return langAttr || 'ru';
+    }
+
+    // Функция для обновления языка табов
+    function updateTabsLanguage() {
+        const currentLang = getCurrentLanguage();
+        tabs.forEach(tab => {
+            const ruSpan = tab.querySelector('.lang-ru');
+            const enSpan = tab.querySelector('.lang-en');
+            
+            if (currentLang === 'ru') {
+                ruSpan.style.display = 'inline';
+                enSpan.style.display = 'none';
+            } else {
+                ruSpan.style.display = 'none';
+                enSpan.style.display = 'inline';
+            }
+        });
+    }
+
     function loadPrices(category) {
         if (!priceTableBody) return;
         
         priceTableBody.innerHTML = '';
         const prices = priceData[category];
+        const currentLang = getCurrentLanguage();
+        const isEnglish = currentLang === 'en';
         
         prices.forEach(service => {
             const row = document.createElement('div');
             row.className = 'pricing-row';
             
+            // Определяем данные для текущего языка
+            const title = isEnglish ? service.titleEn : service.title;
+            const period = isEnglish ? service.periodEn : service.period;
+            const features = isEnglish ? service.featuresEn : service.features;
+            const popularText = isEnglish ? 'Popular' : 'Популярный';
+            
             row.innerHTML = `
-                <div class="pricing-cell service-col lang-ru">${service.title} ${service.popular ? '<span class="popular-badge lang-ru">Популярный</span>' : ''}</div>
-                <div class="pricing-cell service-col lang-en">${service.titleEn} ${service.popular ? '<span class="popular-badge lang-en">Popular</span>' : ''}</div>
-                <div class="pricing-cell price-col lang-ru">${service.price} ${service.period}</div>
-                <div class="pricing-cell price-col lang-en">${service.priceEn} ${service.periodEn}</div>
-                <div class="pricing-cell features-col lang-ru">
-                    <div class="price-features">
-                        ${service.features.map(feat => `
-                            <div class="price-feature">
-                                <i class="fas fa-check"></i>
-                                <span>${feat}</span>
-                            </div>
-                        `).join('')}
-                    </div>
+                <div class="pricing-cell service-col lang-${currentLang}">
+                    ${title} 
+                    ${service.popular ? `<span class="popular-badge lang-${currentLang}">${popularText}</span>` : ''}
                 </div>
-                <div class="pricing-cell features-col lang-en">
+                <div class="pricing-cell price-col lang-${currentLang}">
+                    ${service.price} ${period}
+                </div>
+                <div class="pricing-cell features-col lang-${currentLang}">
                     <div class="price-features">
-                        ${service.featuresEn.map(feat => `
+                        ${features.map(feat => `
                             <div class="price-feature">
                                 <i class="fas fa-check"></i>
                                 <span>${feat}</span>
@@ -295,6 +320,44 @@ document.addEventListener('DOMContentLoaded', function() {
             
             priceTableBody.appendChild(row);
         });
+        
+        // Обновляем видимость языковых элементов после добавления строк
+        updateLanguageVisibility();
+    }
+
+    // Функция для обновления видимости языковых элементов
+    function updateLanguageVisibility() {
+        const currentLang = getCurrentLanguage();
+        
+        // Обновляем видимость в таблице
+        document.querySelectorAll('.pricing-cell').forEach(cell => {
+            if (cell.classList.contains(`lang-${currentLang}`)) {
+                cell.style.display = '';
+            } else if (cell.classList.contains('lang-ru') || cell.classList.contains('lang-en')) {
+                cell.style.display = 'none';
+            }
+        });
+        
+        // Обновляем видимость заголовков таблицы
+        document.querySelectorAll('.pricing-header-item').forEach(header => {
+            if (header.classList.contains(`lang-${currentLang}`)) {
+                header.style.display = '';
+            } else if (header.classList.contains('lang-ru') || header.classList.contains('lang-en')) {
+                header.style.display = 'none';
+            }
+        });
+        
+        // Обновляем кнопку заказа
+        document.querySelectorAll('.order-btn span').forEach(span => {
+            if (span.classList.contains(`lang-${currentLang}`)) {
+                span.style.display = 'inline';
+            } else {
+                span.style.display = 'none';
+            }
+        });
+        
+        // Обновляем табы
+        updateTabsLanguage();
     }
 
     // Tab switching
@@ -307,6 +370,26 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
+    // Наблюдатель за изменениями языка
+    function observeLanguageChanges() {
+        const observer = new MutationObserver((mutations) => {
+            mutations.forEach((mutation) => {
+                if (mutation.type === 'attributes' && mutation.attributeName === 'lang') {
+                    loadPrices(currentCategory);
+                }
+            });
+        });
+        
+        observer.observe(document.documentElement, {
+            attributes: true,
+            attributeFilter: ['lang']
+        });
+    }
+
     // Initial load
     loadPrices(currentCategory);
+    observeLanguageChanges();
+    
+    // Инициализация видимости табов
+    updateTabsLanguage();
 });
