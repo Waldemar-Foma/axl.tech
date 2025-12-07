@@ -91,25 +91,6 @@ const teamMembers = [
     },
     {
         id: 3,
-        name: "Алексеев Александр",
-        nameEn: "Alekseyev Alexander",
-        role: "Backend Developer",
-        roleEn: "Backend Developer",
-        bio: "Создает комплексные программные решения, от серверной части веб-сайтов и мобильных приложений до интеллектуальных ботов и систем анализа данных, обеспечивая их стабильную работу и удобный пользовательский опыт.",
-        bioEn: "Ensures stable operation of all platform services. Not only from the beginning to the end of its implementation, but also during its operation.",
-        photo: "../images/alex.jpg",
-        skills: {
-            "Backend": ["Python", "FastAPI", "Django", "Node.js"],
-            "Базы данных": ["SQL", "PostgreSQL", "MySQL", "Redis"],
-            "Инфраструктура": ["Docker", "Git", "Bash", "Deployment"],
-            "Разработка": ["Frontend", "HTML5", "CSS3", "Android", "Kotlin", "Qt", "Telegram Bots (Aiogram)", "API Development"],
-            "Анализ данных": ["Pandas", "Data Analysis"],
-            "Языки": ["English B2"]
-        },
-        personalPage: "team/alex.html"
-    },
-    {
-        id: 4,
         name: "Айрапетян Эрик",
         nameEn: "Ayrapetyan Erik",
         role: "Backend Developer",
@@ -127,184 +108,47 @@ const teamMembers = [
     }
 ];
 
-// Team Carousel Variables
-let currentSlide = 0;
-let slidesToShow = 1;
-let slideWidth = 0;
-const gap = 20;
+// Gallery Data
+const teamPhotos = [
+    { src: 'images/team_2.jpg', alt: 'Our Team' },
+    { src: 'images/team.jpg', alt: 'Team Photo 2' },
+    { src: 'images/team_1.jpg', alt: 'Team Photo 3' },
+    { src: 'images/team_3.jpg', alt: 'Team Photo 4' }
+];
 
-// Team Carousel
-function initTeamCarousel() {
-    const teamGrid = document.querySelector('.team-grid');
-    if (!teamGrid) return;
-
-    // Очищаем и создаем карточки
-    teamGrid.innerHTML = '';
-    teamMembers.forEach((member, index) => {
-        const memberCard = createMemberCard(member, index);
-        teamGrid.appendChild(memberCard);
-    });
-
-    // Инициализируем карусель
-    updateSlidesToShow();
-    setupCarouselNavigation();
-    updateCarousel();
-}
-
-function createMemberCard(member, index) {
-    const memberCard = document.createElement('div');
-    memberCard.className = 'team-member';
-    memberCard.dataset.index = index;
-    
-    const currentLang = document.documentElement.getAttribute('lang') || 'ru';
-    const useEnglish = currentLang === 'en';
-
-    memberCard.innerHTML = `
-        <div class="member-photo" style="background-image: url('${member.photo}')" 
-             onerror="this.style.backgroundImage='url(../images/default-avatar.jpg)'"></div>
-        <div class="member-info">
-            <h3 class="member-name">${useEnglish ? member.nameEn : member.name}</h3>
-            <div class="member-role">${useEnglish ? member.roleEn : member.role}</div>
-            <p class="member-bio">${useEnglish ? member.bioEn : member.bio}</p>
-            <div class="member-skills">
-                ${Object.keys(member.skills).slice(0, 3).map(category => 
-                    `<span class="skill-tag">${category}</span>`
-                ).join('')}
-            </div>
-        </div>
-    `;
-
-    memberCard.addEventListener('click', (e) => {
-        openTeamModal(member);
-    });
-
-    return memberCard;
-}
-
-function updateSlidesToShow() {
-    const width = window.innerWidth;
-    let newSlidesToShow;
-    
-    if (width < 480) newSlidesToShow = 1;
-    else if (width < 768) newSlidesToShow = 2;
-    else if (width < 1024) newSlidesToShow = 3;
-    else newSlidesToShow = 4;
-    
-    if (newSlidesToShow !== slidesToShow) {
-        slidesToShow = newSlidesToShow;
-        updateCarousel();
-    }
-}
-
-function updateCarousel() {
-    const teamGrid = document.querySelector('.team-grid');
-    if (!teamGrid || teamGrid.children.length === 0) return;
-
-    // Рассчитываем ширину одного слайда
-    const firstSlide = teamGrid.children[0];
-    slideWidth = firstSlide.offsetWidth + gap;
-    
-    // Рассчитываем максимальный слайд
-    const maxSlide = Math.max(0, teamMembers.length - slidesToShow);
-    currentSlide = Math.min(currentSlide, maxSlide);
-    
-    // Устанавливаем позицию
-    setSliderPosition();
-    updateNavigation();
-    updateDots();
-}
-
-function setSliderPosition() {
-    const teamGrid = document.querySelector('.team-grid');
-    if (teamGrid) {
-        const translateX = -currentSlide * slideWidth;
-        teamGrid.style.transform = `translateX(${translateX}px)`;
-        teamGrid.style.transition = 'transform 0.4s ease';
-    }
-}
-
-function goToSlide(slideIndex) {
-    const maxSlide = Math.max(0, teamMembers.length - slidesToShow);
-    currentSlide = Math.max(0, Math.min(slideIndex, maxSlide));
-    updateCarousel();
-}
-
-function setupCarouselNavigation() {
-    const prevBtn = document.querySelector('.prev-btn');
-    const nextBtn = document.querySelector('.next-btn');
-
-    // Удаляем старые обработчики
-    const newPrevBtn = prevBtn?.cloneNode(true);
-    const newNextBtn = nextBtn?.cloneNode(true);
-    
-    if (prevBtn && newPrevBtn) {
-        prevBtn.parentNode.replaceChild(newPrevBtn, prevBtn);
-        newPrevBtn.addEventListener('click', () => goToSlide(currentSlide - 1));
-    }
-    
-    if (nextBtn && newNextBtn) {
-        nextBtn.parentNode.replaceChild(newNextBtn, nextBtn);
-        newNextBtn.addEventListener('click', () => goToSlide(currentSlide + 1));
-    }
-}
-
-function updateNavigation() {
-    const prevBtn = document.querySelector('.prev-btn');
-    const nextBtn = document.querySelector('.next-btn');
-    
-    if (prevBtn) {
-        prevBtn.disabled = currentSlide === 0;
-        prevBtn.style.opacity = prevBtn.disabled ? '0.3' : '0.9';
-    }
-    
-    if (nextBtn) {
-        const maxSlide = Math.max(0, teamMembers.length - slidesToShow);
-        nextBtn.disabled = currentSlide >= maxSlide;
-        nextBtn.style.opacity = nextBtn.disabled ? '0.3' : '0.9';
-    }
-}
-
-function createDots() {
-    const dotsContainer = document.querySelector('.carousel-dots');
-    if (!dotsContainer) return;
-    
-    dotsContainer.innerHTML = '';
-    const dotCount = Math.ceil(teamMembers.length / slidesToShow);
-    
-    for (let i = 0; i < dotCount; i++) {
-        const dot = document.createElement('button');
-        dot.className = 'carousel-dot';
-        dot.addEventListener('click', () => goToSlide(i * slidesToShow));
-        dotsContainer.appendChild(dot);
-    }
-    
-    updateDots();
-}
-
-function updateDots() {
-    const dots = document.querySelectorAll('.carousel-dot');
-    const activeDotIndex = Math.floor(currentSlide / slidesToShow);
-    
-    dots.forEach((dot, index) => {
-        dot.classList.toggle('active', index === activeDotIndex);
-    });
-}
-
-// Render Team with Language Support
+// Team Render Function
 function renderTeam(lang) {
     const teamGrid = document.querySelector('.team-grid');
     if (!teamGrid) return;
     
     teamGrid.innerHTML = '';
-    teamMembers.forEach((member, index) => {
-        const memberCard = createMemberCard(member, index);
+    const useEnglish = lang === 'en';
+    
+    teamMembers.forEach((member) => {
+        const memberCard = document.createElement('div');
+        memberCard.className = 'team-member';
+        
+        memberCard.innerHTML = `
+            <div class="member-photo" style="background-image: url('${member.photo}')" 
+                 onerror="this.style.backgroundImage='url(../images/default-avatar.jpg)'"></div>
+            <div class="member-info">
+                <h3 class="member-name">${useEnglish ? member.nameEn : member.name}</h3>
+                <div class="member-role">${useEnglish ? member.roleEn : member.role}</div>
+                <p class="member-bio">${useEnglish ? member.bioEn : member.bio}</p>
+                <div class="member-skills">
+                    ${Object.keys(member.skills).slice(0, 3).map(category => 
+                        `<span class="skill-tag">${category}</span>`
+                    ).join('')}
+                </div>
+            </div>
+        `;
+        
+        memberCard.addEventListener('click', () => {
+            openTeamModal(member);
+        });
+        
         teamGrid.appendChild(memberCard);
     });
-    
-    // Полная переинициализация
-    updateSlidesToShow();
-    setupCarouselNavigation();
-    updateCarousel();
 }
 
 // Open Team Member Modal
@@ -352,6 +196,92 @@ function openTeamModal(member) {
     document.body.classList.add('modal-open');
 }
 
+// Gallery Functions
+function openGallery(startIndex = 0) {
+    const modal = document.getElementById('galleryModal');
+    if (!modal) return;
+    
+    const currentImage = document.getElementById('currentGalleryImage');
+    const currentIndexSpan = document.getElementById('currentIndex');
+    const totalImagesSpan = document.getElementById('totalImages');
+    const thumbnailsContainer = document.querySelector('.gallery-thumbnails');
+    
+    // Проверяем существование всех необходимых элементов
+    if (!currentImage || !currentIndexSpan || !totalImagesSpan || !thumbnailsContainer) return;
+    
+    // Устанавливаем текущее изображение
+    currentImage.src = teamPhotos[startIndex].src;
+    currentImage.alt = teamPhotos[startIndex].alt;
+    currentIndexSpan.textContent = startIndex + 1;
+    totalImagesSpan.textContent = teamPhotos.length;
+    
+    // Очищаем и создаем миниатюры
+    thumbnailsContainer.innerHTML = '';
+    teamPhotos.forEach((photo, index) => {
+        const thumbnail = document.createElement('div');
+        thumbnail.className = `gallery-thumbnail ${index === startIndex ? 'active' : ''}`;
+        thumbnail.dataset.index = index;
+        
+        thumbnail.innerHTML = `
+            <img src="${photo.src}" alt="${photo.alt}">
+        `;
+        
+        thumbnail.addEventListener('click', () => {
+            changeGalleryImage(index);
+        });
+        
+        thumbnailsContainer.appendChild(thumbnail);
+    });
+    
+    modal.classList.add('show');
+    document.body.style.overflow = 'hidden';
+    document.body.classList.add('modal-open');
+    
+    // Сохраняем текущий индекс в data-атрибуте модального окна
+    modal.dataset.currentIndex = startIndex;
+}
+
+function changeGalleryImage(index) {
+    const modal = document.getElementById('galleryModal');
+    const currentImage = document.getElementById('currentGalleryImage');
+    const currentIndexSpan = document.getElementById('currentIndex');
+    
+    // Проверяем существование элементов
+    if (!modal || !currentImage || !currentIndexSpan) return;
+    
+    // Анимация перехода
+    currentImage.style.opacity = '0';
+    
+    setTimeout(() => {
+        currentImage.src = teamPhotos[index].src;
+        currentImage.alt = teamPhotos[index].alt;
+        currentImage.style.opacity = '1';
+        currentIndexSpan.textContent = index + 1;
+        
+        // Обновляем активную миниатюру
+        document.querySelectorAll('.gallery-thumbnail').forEach((thumb, i) => {
+            thumb.classList.toggle('active', i === index);
+        });
+        
+        // Обновляем текущий индекс
+        modal.dataset.currentIndex = index;
+    }, 200);
+}
+
+function nextGalleryImage() {
+    const modal = document.getElementById('galleryModal');
+    let currentIndex = parseInt(modal.dataset.currentIndex) || 0;
+    const nextIndex = (currentIndex + 1) % teamPhotos.length;
+    changeGalleryImage(nextIndex);
+}
+
+function prevGalleryImage() {
+    const modal = document.getElementById('galleryModal');
+    let currentIndex = parseInt(modal.dataset.currentIndex) || 0;
+    const prevIndex = (currentIndex - 1 + teamPhotos.length) % teamPhotos.length;
+    changeGalleryImage(prevIndex);
+}
+
 // Modal functions
 function closeModal() {
     document.querySelectorAll('.modal').forEach(modal => {
@@ -382,6 +312,83 @@ function setupModalHandlers() {
     });
 }
 
+// Initialize Gallery Handlers
+function setupGalleryHandlers() {
+    // Клик на основную фотографию - проверяем существование элемента
+    const mainTeamPhoto = document.querySelector('.main-team-photo');
+    if (mainTeamPhoto) {
+        mainTeamPhoto.addEventListener('click', () => {
+            openGallery(0);
+        });
+    }
+    
+    // Клик на миниатюры - проверяем существование элементов
+    const thumbnails = document.querySelectorAll('.thumbnail');
+    if (thumbnails.length > 0) {
+        thumbnails.forEach(thumb => {
+            thumb.addEventListener('click', () => {
+                const index = parseInt(thumb.dataset.index);
+                openGallery(index);
+            });
+        });
+    }
+    
+    // Навигация в модальном окне - проверяем существование элементов
+    const nextBtn = document.querySelector('.gallery-nav.next');
+    const prevBtn = document.querySelector('.gallery-nav.prev');
+    
+    if (nextBtn) {
+        nextBtn.addEventListener('click', nextGalleryImage);
+    }
+    
+    if (prevBtn) {
+        prevBtn.addEventListener('click', prevGalleryImage);
+    }
+    
+    // Клавиатурная навигация для галереи
+    document.addEventListener('keydown', (e) => {
+        const modal = document.getElementById('galleryModal');
+        if (!modal || !modal.classList.contains('show')) return;
+        
+        if (e.key === 'ArrowRight') {
+            nextGalleryImage();
+        } else if (e.key === 'ArrowLeft') {
+            prevGalleryImage();
+        }
+    });
+    
+    // Свайпы для мобильных устройств - проверяем существование элемента
+    const gallerySlide = document.querySelector('.gallery-slide');
+    if (gallerySlide) {
+        let touchStartX = 0;
+        let touchEndX = 0;
+        
+        gallerySlide.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+        });
+        
+        gallerySlide.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        });
+        
+        function handleSwipe() {
+            const swipeThreshold = 50;
+            const diff = touchStartX - touchEndX;
+            
+            if (Math.abs(diff) > swipeThreshold) {
+                if (diff > 0) {
+                    // Свайп влево - следующее фото
+                    nextGalleryImage();
+                } else {
+                    // Свайп вправо - предыдущее фото
+                    prevGalleryImage();
+                }
+            }
+        }
+    }
+}
+
 // Initialize Everything
 document.addEventListener('DOMContentLoaded', function() {
     // Initialize theme and language
@@ -391,11 +398,11 @@ document.addEventListener('DOMContentLoaded', function() {
     setTheme(savedTheme);
     setLanguage(savedLang);
     
-    // Initialize team carousel
-    initTeamCarousel();
-    
     // Setup modal handlers
     setupModalHandlers();
+    
+    // Setup gallery handlers
+    setupGalleryHandlers();
     
     // Theme switcher
     document.querySelectorAll('.theme-btn').forEach(button => {
@@ -407,7 +414,8 @@ document.addEventListener('DOMContentLoaded', function() {
     // Language switcher
     document.querySelectorAll('.lang-btn').forEach(button => {
         button.addEventListener('click', () => {
-            setLanguage(button.getAttribute('data-lang'));
+            const lang = button.getAttribute('data-lang');
+            setLanguage(lang);
         });
     });
     
@@ -424,23 +432,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Keyboard navigation for carousel
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'ArrowLeft') goToSlide(currentSlide - 1);
-        else if (e.key === 'ArrowRight') goToSlide(currentSlide + 1);
-        else if (e.key === 'Escape') closeModal();
-    });
-    
-    // Window resize handler
-    let resizeTimeout;
-    window.addEventListener('resize', function() {
-        clearTimeout(resizeTimeout);
-        resizeTimeout = setTimeout(() => {
-            updateSlidesToShow();
-            updateCarousel();
-        }, 250);
-    });
-
     // Preloader
     const preloader = document.querySelector('.preloader');
     if (preloader) {
@@ -449,7 +440,7 @@ document.addEventListener('DOMContentLoaded', function() {
             setTimeout(() => {
                 preloader.style.display = 'none';
             }, 200);
-        }, 2000);
+        }, 1300);
     }
 });
 
@@ -487,6 +478,3 @@ if (typeof particlesJS !== 'undefined' && document.getElementById('particles-js'
         retina_detect: true
     });
 }
-
-let animationFrame = 0;
-
