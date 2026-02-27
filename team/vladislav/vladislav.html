@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>foma.lab · dev/ux</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="css/styles.css">
@@ -25,43 +25,53 @@
         <div class="grid-line horizontal" style="top: 90%"></div>
     </div>
 
-    <main class="main">
-        <header class="glass-header">
-            <div class="header-content">
-                <div class="brand">
-                    <a href="/" class="brand-name">foma.lab</a>
-                    <span class="brand-tagline">[creative studio]</span>
-                </div>
-                
-                <nav class="nav">
-                    <a href="#work" class="nav-link">[work]</a>
-                    <a href="#skills" class="nav-link">[skills]</a>
-                    <a href="#contact" class="nav-link">[contact]</a>
-                </nav>
+    <header class="glass-header" id="header">
+        <div class="header-content">
+            <a href="/" class="logo">foma.lab</a>
+            
+            <!-- Десктоп навигация -->
+            <nav class="nav-links">
+                <a href="#work" class="nav-link">[work]</a>
+                <a href="#skills" class="nav-link">[skills]</a>
+                <a href="#contact" class="nav-link">[contact]</a>
+            </nav>
 
-                <div class="status">
-                    <span class="status-dot"></span>
-                    <span class="status-text">available</span>
-                </div>
+            <!-- Гамбургер -->
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
             </div>
-        </header>
 
+            <div class="status">
+                <span class="status-dot"></span>
+                <span class="status-text">available</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Мобильное меню -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#work" class="mobile-nav-link">[work]</a>
+        <a href="#skills" class="mobile-nav-link">[skills]</a>
+        <a href="#contact" class="mobile-nav-link">[contact]</a>
+    </div>
+
+    <main class="main">
         <section class="hero">
             <div class="hero-container">
-                <div class="hero-left">
-                    <div class="name-block">
-                        <h1 class="name-title">
-                            <span class="name-line name-surname">ФОМЕНКО</span>
-                            <span class="name-line name-first">ВЛАДИСЛАВ</span>
-                        </h1>
-                        
-                        <div class="name-meta">
-                            <span class="meta-item">основатель foma.lab</span>
-                            <span class="meta-dot">●</span>
-                            <span class="meta-item">2019 — 2026</span>
-                            <span class="meta-dot">●</span>
-                            <span class="meta-item">Калининград</span>
-                        </div>
+                <div class="hero-content">
+                    <h1 class="hero-title">
+                        <span>ФОМЕНКО</span>
+                        <span>ВЛАДИСЛАВ</span>
+                    </h1>
+                    
+                    <div class="hero-meta">
+                        <span>основатель foma.lab</span>
+                        <span class="meta-dot">●</span>
+                        <span>2019 — 2026</span>
+                        <span class="meta-dot">●</span>
+                        <span>Калининград</span>
                     </div>
 
                     <div class="hero-stats">
@@ -92,14 +102,9 @@
                     </div>
                 </div>
 
-                <div class="hero-right">
+                <div class="hero-image">
                     <div class="glass-photo-card" id="photoCard">
-                        <div class="photo-container">
-                            <img src="https://sun9-41.userapi.com/s/v1/ig2/bRYKUXbzIf81zt9R2Duemvgizvt8foThyy2czgVuTz2UdqBhWEiKRcPGUJLWht_bgyd2fM0ZhIdsOV-TPXjSF4Nv.jpg?quality=95&as=32x21,48x32,72x48,108x72,160x107,240x160,360x240,480x320,540x360,640x427,720x480,1080x720,1280x854,1440x960,2200x1467&from=bu&cs=2200x0" alt="Фоменко Владислав" class="photo-image">
-                            <div class="glass-layer layer-1"></div>
-                            <div class="glass-layer layer-2"></div>
-                            <div class="glass-shine"></div>
-                        </div>
+                        <img src="https://sun9-41.userapi.com/s/v1/ig2/bRYKUXbzIf81zt9R2Duemvgizvt8foThyy2czgVuTz2UdqBhWEiKRcPGUJLWht_bgyd2fM0ZhIdsOV-TPXjSF4Nv.jpg?quality=95&as=32x21,48x32,72x48,108x72,160x107,240x160,360x240,480x320,540x360,640x427,720x480,1080x720,1280x854,1440x960,2200x1467&from=bu&cs=2200x0" alt="Фоменко Владислав">
                         
                         <div class="photo-hashtags" id="photoHashtags">
                             <span class="photo-hashtag">#creativemind</span>
@@ -119,7 +124,7 @@
             </div>
         </section>
 
-        <section id="skills" class="skills">
+        <section id="skills" class="section-padding">
             <div class="section-header">
                 <h2 class="section-title">
                     <span class="title-number">[01]</span>
@@ -131,7 +136,7 @@
             <div class="skills-grid">
                 <div class="skill-card">
                     <div class="skill-icon"><i class="bi bi-code-slash"></i></div>
-                    <h3 class="skill-category">Frontend</h3>
+                    <h3>Frontend</h3>
                     <div class="skill-list">
                         <span>HTML5</span>
                         <span>CSS3</span>
@@ -142,7 +147,7 @@
 
                 <div class="skill-card">
                     <div class="skill-icon"><i class="bi bi-hdd-stack"></i></div>
-                    <h3 class="skill-category">Backend</h3>
+                    <h3>Backend</h3>
                     <div class="skill-list">
                         <span>Python</span>
                         <span>TypeScript</span>
@@ -151,7 +156,7 @@
 
                 <div class="skill-card">
                     <div class="skill-icon"><i class="bi bi-brush"></i></div>
-                    <h3 class="skill-category">Дизайн</h3>
+                    <h3>Дизайн</h3>
                     <div class="skill-list">
                         <span>Figma</span>
                         <span>Adobe Illustrator</span>
@@ -161,7 +166,7 @@
             </div>
         </section>
 
-        <section id="work" class="work">
+        <section id="work" class="section-padding">
             <div class="section-header">
                 <h2 class="section-title">
                     <span class="title-number">[02]</span>
@@ -170,10 +175,81 @@
                 <div class="section-desc">мои работы</div>
             </div>
 
-            <div class="work-grid">
+            <div class="works-grid">
+                <!-- METANOIA - VR приложение для ПТСР -->
+                <div class="work-card">
+                    <div class="work-year">2025</div>
+                    <h3>METANOIA</h3>
+                    <div class="work-tags">
+                        <span><i class="bi bi-flask"></i> Flask</span>
+                        <span><i class="bi bi-vr"></i> VR</span>
+                        <span><i class="bi bi-brain"></i> EMDR</span>
+                        <span><i class="bi bi-shield-plus"></i> ПТСР</span>
+                    </div>
+                    <p class="work-description">VR-приложение для контролируемой экспозиции травматических воспоминаний при ПТСР</p>
+                    <button class="work-detail-btn" data-project="metanoia"><i class="bi bi-arrow-up-right-circle"></i></button>
+                    
+                    <div class="work-detail" id="detail-metanoia">
+                        <div class="detail-content">
+                            <h4>METANOIA</h4>
+                            <p>VR-приложение для контролируемой экспозиции травматических воспоминаний при ПТСР с возможностью мгновенного перехода к терапевтическим модулям.</p>
+                            <div class="detail-features">
+                                <div>
+                                    <strong><i class="bi bi-vr"></i> Терапевтические модули:</strong>
+                                    <ul>
+                                        <li><i class="bi bi-eye"></i> EMDR-терапия</li>
+                                        <li><i class="bi bi-shield"></i> Безопасное место</li>
+                                        <li><i class="bi bi-sliders2"></i> Настройка интенсивности</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <strong><i class="bi bi-gear"></i> Технические возможности:</strong>
+                                    <ul>
+                                        <li><i class="bi bi-clock-history"></i> Логирование сессий</li>
+                                        <li><i class="bi bi-lightning"></i> Мгновенный переход между модулями</li>
+                                        <li><i class="bi bi-bar-chart"></i> Аналитика прогресса</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <p style="margin-top: var(--spacing-md); font-size: 0.9rem; opacity: 0.8;">Стек: Flask, WebVR, Python, JavaScript</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CMSE - Календарь спортивных событий -->
                 <div class="work-card">
                     <div class="work-year">2024</div>
-                    <h3 class="work-title">SKILL SCOUT</h3>
+                    <h3>CMSE</h3>
+                    <div class="work-tags">
+                        <span><i class="bi bi-calendar-event"></i> Flask</span>
+                        <span><i class="bi bi-database"></i> SQL</span>
+                        <span><i class="bi bi-bell"></i> Уведомления</span>
+                    </div>
+                    <p class="work-description">Calendar of Major Sports Events — комплексный календарь главных спортивных событий</p>
+                    <button class="work-detail-btn" data-project="cmse"><i class="bi bi-arrow-up-right-circle"></i></button>
+                    
+                    <div class="work-detail" id="detail-cmse">
+                        <div class="detail-content">
+                            <h4>CMSE</h4>
+                            <p>Calendar of Major Sports Events — платформа для спортивных энтузиастов с организованным и комплексным календарем значимых спортивных событий.</p>
+                            
+                            <strong><i class="bi bi-rocket"></i> Возможности:</strong>
+                            <ul style="margin-bottom: var(--spacing-md);">
+                                <li><i class="bi bi-list-check"></i> Комплексные списки: футбол, баскетбол, теннис и другие</li>
+                                <li><i class="bi bi-bell"></i> Настраиваемые уведомления о любимых событиях</li>
+                                <li><i class="bi bi-person-workspace"></i> Удобный интерфейс с легкой навигацией</li>
+                                <li><i class="bi bi-info-circle"></i> Детали событий: даты, время, места, участвующие команды</li>
+                            </ul>
+                            
+                            <p style="font-size: 0.9rem; opacity: 0.8;">Стек: Flask, SQLite, Bootstrap, FullCalendar.js</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SKILL SCOUT -->
+                <div class="work-card">
+                    <div class="work-year">2024</div>
+                    <h3>SKILL SCOUT</h3>
                     <div class="work-tags">
                         <span><i class="bi bi-filetype-vue"></i>HTML + CSS + JS</span>
                         <span><i class="bi bi-nodejs"></i>Python(Flask)</span>
@@ -182,7 +258,7 @@
                     <p class="work-description">Платформа для подбора персонала с видеоанализом эмоций и речевой аналитикой</p>
                     <button class="work-detail-btn" data-project="skillscout"><i class="bi bi-arrow-up-right-circle"></i></button>
                     
-                    <div class="work-detail glass-detail" id="detail-skillscout">
+                    <div class="work-detail" id="detail-skillscout">
                         <div class="detail-content">
                             <h4>SkillScout</h4>
                             <p>Инновационная платформа для подбора персонала с использованием видеоанализа эмоций, речевой аналитики и оценки личностных качеств.</p>
@@ -208,10 +284,10 @@
                     </div>
                 </div>
 
-
+                <!-- ЭЛАР -->
                 <div class="work-card">
                     <div class="work-year">2025 — наст.</div>
-                    <h3 class="work-title">ЭЛАР</h3>
+                    <h3>ЭЛАР</h3>
                     <div class="work-tags">
                         <span><i class="bi bi-filetype-vue"></i> Flask</span>
                         <span><i class="bi bi-python"></i> Python</span>
@@ -220,24 +296,23 @@
                     <p class="work-description">Цифровая экосистема для вуза с прогнозной аналитикой</p>
                     <button class="work-detail-btn" data-project="elar"><i class="bi bi-arrow-up-right-circle"></i></button>
                     
-                    <div class="work-detail glass-detail" id="detail-elar">
+                    <div class="work-detail" id="detail-elar">
                         <div class="detail-content">
                             <h4>ЭЛАР</h4>
                             <p>Цифровая экосистема для полной цифровизации учебного процесса. Объединяет студентов, преподавателей и администрацию.</p>
-                            <div class="detail-features">
-                                <ul>
-                                    <li><i class="bi bi-person-workspace"></i> Персонализированное пространство</li>
-                                    <li><i class="bi bi-graph-up-arrow"></i> Прогнозирование академических рисков</li>
-                                    <li><i class="bi bi-robot"></i> Автоматизация рутины</li>
-                                </ul>
-                            </div>
+                            <ul>
+                                <li><i class="bi bi-person-workspace"></i> Персонализированное пространство</li>
+                                <li><i class="bi bi-graph-up-arrow"></i> Прогнозирование академических рисков</li>
+                                <li><i class="bi bi-robot"></i> Автоматизация рутины</li>
+                            </ul>
                         </div>
                     </div>
                 </div>
 
+                <!-- ЦОДД · СМОЛЕНСК -->
                 <div class="work-card">
                     <div class="work-year">2025</div>
-                    <h3 class="work-title">ЦОДД · СМОЛЕНСК</h3>
+                    <h3>ЦОДД · СМОЛЕНСК</h3>
                     <div class="work-tags">
                         <span><i class="bi bi-filetype-jsx"></i> React</span>
                         <span><i class="bi bi-map"></i> Maps</span>
@@ -246,7 +321,7 @@
                     <p class="work-description">Интерактивная карта пробок и светофоров для хакатона</p>
                     <button class="work-detail-btn" data-project="codd"><i class="bi bi-arrow-up-right-circle"></i></button>
                     
-                    <div class="work-detail glass-detail" id="detail-codd">
+                    <div class="work-detail" id="detail-codd">
                         <div class="detail-content">
                             <h4>ЦОДД Смоленск</h4>
                             <p>Платформа для Центра организации дорожного движения с интерактивной картой пробок и светофоров.</p>
@@ -259,9 +334,10 @@
                     </div>
                 </div>
 
+                <!-- DESIGN WORKS -->
                 <div class="work-card">
                     <div class="work-year">2022 — наст.</div>
-                    <h3 class="work-title">DESIGN WORKS</h3>
+                    <h3>DESIGN WORKS</h3>
                     <div class="work-tags">
                         <span><i class="bi bi-figma"></i> Figma</span>
                         <span><i class="bi bi-pencil"></i> Illustrator</span>
@@ -270,7 +346,7 @@
                     <p class="work-description">30+ дизайн-проектов: от креативов до прототипов</p>
                     <button class="work-detail-btn" data-project="design"><i class="bi bi-arrow-up-right-circle"></i></button>
                     
-                    <div class="work-detail glass-detail" id="detail-design">
+                    <div class="work-detail" id="detail-design">
                         <div class="detail-content">
                             <h4>Дизайн-проекты</h4>
                             <p>Более 30 дизайн-проектов различной сложности:</p>
@@ -286,52 +362,50 @@
             </div>
         </section>
 
-        <section id="contact" class="contact">
-            <div class="contact-container">
-                <h2 class="contact-title">СВЯЗАТЬСЯ</h2>
+        <section id="contact" class="section-padding">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <span class="title-number">[03]</span>
+                    <span class="title-text">КОНТАКТЫ</span>
+                </h2>
+                <div class="section-desc">свяжитесь со мной</div>
+            </div>
+
+            <div class="contacts-list">
+                <a href="mailto:vladislavfomenko77@gmail.com" class="contact-item">
+                    <span>EMAIL</span>
+                    <span>vladislavfomenko77@gmail.com</span>
+                    <i class="bi bi-box-arrow-up-right"></i>
+                </a>
                 
-                <div class="contact-grid">
-                    <a href="mailto:vladislavfomenko77@gmail.com" class="contact-item">
-                        <span class="contact-label">EMAIL</span>
-                        <span class="contact-value">vladislavfomenko77@gmail.com</span>
-                        <span class="contact-arrow"><i class="bi bi-box-arrow-up-right"></i></span>
-                    </a>
-                    
-                    <a href="https://t.me/Waldemar_r" class="contact-item">
-                        <span class="contact-label">TELEGRAM</span>
-                        <span class="contact-value">@Waldemar_r</span>
-                        <span class="contact-arrow"><i class="bi bi-box-arrow-up-right"></i></span>
-                    </a>
-                    
-                    <a href="https://github.com/Waldemar-Foma" class="contact-item">
-                        <span class="contact-label">GITHUB</span>
-                        <span class="contact-value">/Waldemar-Foma</span>
-                        <span class="contact-arrow"><i class="bi bi-box-arrow-up-right"></i></span>
-                    </a>
+                <a href="https://t.me/Waldemar_r" class="contact-item">
+                    <span>TELEGRAM</span>
+                    <span>@Waldemar_r</span>
+                    <i class="bi bi-box-arrow-up-right"></i>
+                </a>
+                
+                <a href="https://github.com/Waldemar-Foma" class="contact-item">
+                    <span>GITHUB</span>
+                    <span>/Waldemar-Foma</span>
+                    <i class="bi bi-box-arrow-up-right"></i>
+                </a>
 
-                    <a href="https://kwork.ru/seller" class="contact-item">
-                        <span class="contact-label">KWORK</span>
-                        <span class="contact-value">/TEAM_AXL</span>
-                        <span class="contact-arrow"><i class="bi bi-box-arrow-up-right"></i></span>
-                    </a>
-                </div>
+                <a href="https://kwork.ru/seller" class="contact-item">
+                    <span>KWORK</span>
+                    <span>/TEAM_AXL</span>
+                    <i class="bi bi-box-arrow-up-right"></i>
+                </a>
+            </div>
 
-                <div class="glass-quote">
-                    <p>«Соединяю дизайн и код, чтобы создавать продукты, которые решают реальные задачи»</p>
-                    <span>— Фоменко Владислав</span>
-                </div>
+            <div class="glass-quote">
+                <p>«Соединяю дизайн и код, чтобы создавать продукты, которые решают реальные задачи»</p>
+                <span>— Фоменко Владислав</span>
             </div>
         </section>
 
         <footer class="footer">
-            <div class="footer-left">
-                <span class="footer-copyright">© 2026</span>
-                <span class="footer-brand">foma.lab</span>
-            </div>
-            <div class="footer-right">
-                <span class="footer-location">Калининград</span>
-                <span class="footer-status">доступен для работы</span>
-            </div>
+            <div>© 2026 foma.lab</div>
+            <div>Калининград · доступен для работы</div>
         </footer>
     </main>
 
