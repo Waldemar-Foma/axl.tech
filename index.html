@@ -6,35 +6,34 @@
     <title>AXL</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="icon" type="image/png" href="images/logo.png">
-    <link
-        rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
 <body>
 
-<div class="navbar">
+<!-- ===== NAVBAR ===== -->
+<nav class="navbar" id="navbar">
     <div class="container nav-inner">
         <a class="logo">AXL</a>
         <div class="nav-links">
             <a href="#" data-nav="home">Главная</a>
             <a href="#about" data-nav="about">О нас</a>
+            <a href="#values" data-nav="values">Подход</a>
             <a href="#projects" data-nav="projects">Проекты</a>
-            <a href="#team-members" data-nav="team">Команда</a>
+            <a href="#team" data-nav="team">Команда</a>
         </div>
         <button class="nav-cta" id="contactNav">Связаться</button>
     </div>
-</div>
+</nav>
 
-<!-- Hero Section -->
+<!-- ===== HERO ===== -->
 <section class="hero" id="home">
     <div class="container hero-grid">
         <div class="hero-content">
-            <div class="hero-badge">AXL TECHNOLOGIES</div>
+            <span class="hero-badge">AXL TECHNOLOGIES</span>
             <h1>Быстро.<br>Качественно.<br>Доступно.</h1>
-            <p class="hero-desc">Инновационные решения<br>для цифрового мира</p>
-            <button class="hero-btn" id="heroButton">О нашей команде</button>
+            <p class="hero-desc">Инновационные решения для цифрового мира</p>
+            <button class="hero-btn" id="heroButton">Начни работать с нами</button>
         </div>
         <div class="hero-visual">
             <div class="outline-shape">
@@ -46,14 +45,14 @@
     </div>
 </section>
 
-<!-- About Section -->
+<!-- ===== ABOUT ===== -->
 <section class="about" id="about">
     <div class="container">
         <div class="about-grid">
             <div class="about-left">
-                <h2>О нашей команде</h2>
-                <div class="section-subhead">Нас объединяет страсть к технологиям и гибкий подход</div>
-                <p>Мы — IT-команда, которая решает сложные задачи просто и эффективно. Специализируемся на fullstack, DevOps, мобильной разработке, ML и блокчейне. Работаем с проектами любого масштаба — от стартапов до корпоративных систем. Продумываем архитектуру, оптимизируем производительность, всегда на связи. Работаем по Agile, без лишней бюрократии. Нужно нестандартное решение или надёжный подрядчик? Это к нам.</p>
+                <span class="section-badge">О команде</span>
+                <h2>Мы создаём цифровые продукты</h2>
+                <p>Создаем сайты, лендинги и сложные программы под ключ. Закрываем полный цикл разработки: от дизайна и кода до менеджмента проекта. Работаем честно, быстро и всегда на связи. Ищете надежную команду? Вы по адресу.</p>
                 <div class="stats-grid">
                     <div class="stats-card">
                         <div class="stats-number">3+</div>
@@ -69,39 +68,27 @@
                     </div>
                 </div>
             </div>
-            
             <div class="about-image">
                 <div class="main-team-photo" id="mainPhotoContainer">
                     <img src="images/team_2.jpg" alt="Our Team" class="team-photo" id="mainTeamPhoto">
-                    <div class="photo-overlay">
-                    </div>
                 </div>
                 <div class="team-thumbnails">
-                    <div class="thumbnail" data-img="images/team_2.jpg">
+                    <div class="thumbnail active" data-img="images/team_2.jpg">
                         <img src="images/team_2.jpg" alt="Team Photo 1" class="thumbnail-img">
                         <div class="thumbnail-overlay">
-                            <div class="thumbnail-label">
-                                <i class="fas fa-search-plus"></i>
-                                <span>МПИТ:2025</span>
-                            </div>
+                            <span class="thumbnail-label">МПИТ:2025</span>
                         </div>
                     </div>
                     <div class="thumbnail" data-img="images/team_1.jpg">
                         <img src="images/team_1.jpg" alt="Team Photo 2" class="thumbnail-img">
                         <div class="thumbnail-overlay">
-                            <div class="thumbnail-label">
-                                <i class="fas fa-search-plus"></i>
-                                <span>KDHack: 2 место</span>
-                            </div>
+                            <span class="thumbnail-label">KDHack: 2 место</span>
                         </div>
                     </div>
                     <div class="thumbnail" data-img="images/team_3.jpg">
                         <img src="images/team_3.jpg" alt="Team Photo 3" class="thumbnail-img">
                         <div class="thumbnail-overlay">
-                            <div class="thumbnail-label">
-                                <i class="fas fa-search-plus"></i>
-                                <span>Едем в Смоленск побеждать</span>
-                            </div>
+                            <span class="thumbnail-label">Едем побеждать</span>
                         </div>
                     </div>
                 </div>
@@ -110,147 +97,234 @@
     </div>
 </section>
 
-<!-- Values Section -->
-<section class="values">
+<!-- ===== VALUES / ICEBERG ===== -->
+<section class="values" id="values">
     <div class="container">
-        <h2>Наши ценности</h2>
-        <div class="section-subhead">Принципы, которые нас ведут</div>
-        <div class="cards-grid">
-            <div class="value-card">
-                <div class="value-icon"><i class="fas fa-lightbulb"></i></div>
-                <div class="value-content">
-                    <h3>Инновации</h3>
-                    <p>Постоянно исследуем новые технологии</p>
+        <div class="values-header">
+            <span class="section-badge">Наш подход</span>
+            <h2>Айсберг <span class="gradient-text">по AXL</span></h2>
+        </div>
+        <div class="iceberg-layout">
+            <div class="iceberg-text">
+                <div class="value-card" data-level="innovation">
+                    <div class="value-icon"><i class="bi bi-lightbulb"></i></div>
+                    <div class="value-content">
+                        <h3>Инновации</h3>
+                        <p>Современные технологии, быстрый фронтенд и продуманный UX. То, что клиент видит на релизе.</p>
+                    </div>
+                </div>
+
+                <div class="value-card" data-level="reliability">
+                    <div class="value-icon"><i class="bi bi-gear"></i></div>
+                    <div class="value-content">
+                        <h3>Надежность</h3>
+                        <p>Базы данных, API, серверная логика — всё работает как часы. Внутренние процессы и архитектура.</p>
+                    </div>
+                </div>
+
+                <div class="value-card" data-level="passion">
+                    <div class="value-icon"><i class="bi bi-heart-fill"></i></div>
+                    <div class="value-content">
+                        <h3>Страсть</h3>
+                        <p>Наш фундамент и любовь к делу. Без неё невозможны ни инновации, ни надёжность.</p>
+                    </div>
                 </div>
             </div>
-            <div class="value-card">
-                <div class="value-icon"><i class="fas fa-handshake"></i></div>
-                <div class="value-content">
-                    <h3>Надежность</h3>
-                    <p>Выполняем обещания и соблюдаем сроки</p>
-                </div>
-            </div>
-            <div class="value-card">
-                <div class="value-icon"><i class="fas fa-heart"></i></div>
-                <div class="value-content">
-                    <h3>Страсть</h3>
-                    <p>Любим то, что делаем</p>
-                </div>
+
+            <div class="iceberg-visual">
+                <svg viewBox="165 120 800 630" xmlns="http://www.w3.org/2000/svg" class="iceberg-svg">
+                    <defs>
+                        <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+                            <feGaussianBlur stdDeviation="4" result="blur"/>
+                            <feComponentTransfer in="blur" result="glow1">
+                                <feFuncA type="linear" slope="0.6"/>
+                            </feComponentTransfer>
+                            <feMerge>
+                                <feMergeNode in="glow1"/>
+                                <feMergeNode in="SourceGraphic"/>
+                            </feMerge>
+                        </filter>
+                        <linearGradient id="waterLineGrad" x1="0" y1="0" x2="1" y2="0">
+                            <stop offset="0%" stop-color="#3a8ec4" stop-opacity="0"/>
+                            <stop offset="40%" stop-color="#3a8ec4" stop-opacity="0.15"/>
+                            <stop offset="60%" stop-color="#2a7aaa" stop-opacity="0.15"/>
+                            <stop offset="100%" stop-color="#2a7aaa" stop-opacity="0"/>
+                        </linearGradient>
+                    </defs>
+                    <path d="M 50 350 Q 250 340, 500 350 T 950 350" fill="none" stroke="url(#waterLineGrad)" stroke-width="2"/>
+                    <g transform="translate(50, 25)">
+                        <g class="ice-section top-ice" data-section="innovation">
+                            <polygon points="250,310 300,130 370,240" fill="#ffffff" stroke="rgba(203,213,225,0.3)" stroke-width="1"/>
+                            <polygon points="370,240 300,130 420,170" fill="#fafcff" stroke="rgba(203,213,225,0.3)" stroke-width="1"/>
+                            <polygon points="370,240 420,170 470,310" fill="#f1f5f9" stroke="rgba(203,213,225,0.3)" stroke-width="1"/>
+                            <polygon points="250,310 370,240 470,310" fill="#e9edf2" stroke="rgba(203,213,225,0.3)" stroke-width="1"/>
+                            <circle cx="335" cy="210" r="22" fill="rgba(255,255,255,0.95)" stroke="#E88D4D" stroke-width="2"/>
+                            <foreignObject x="315" y="188" width="40" height="44">
+                                <div xmlns="http://www.w3.org/1999/xhtml" style="display:flex;align-items:center;justify-content:center;width:100%;height:100%;font-size:22px;color:#E88D4D;">
+                                    <i class="bi bi-lightbulb"></i>
+                                </div>
+                            </foreignObject>
+                            <polygon points="220,310 280,110 500,310" fill="transparent" class="hover-area"/>
+                        </g>
+
+                        <g class="ice-section middle-ice" data-section="reliability">
+                            <polygon points="250,310 470,310 520,470" fill="#e8f4fd" stroke="rgba(147,197,253,0.3)" stroke-width="1"/>
+                            <polygon points="250,310 520,470 380,550" fill="#d5edfd" stroke="rgba(147,197,253,0.3)" stroke-width="1"/>
+                            <polygon points="250,310 380,550 200,450" fill="#bae3fc" stroke="rgba(147,197,253,0.3)" stroke-width="1"/>
+                            <polygon points="200,450 380,550 240,510" fill="#a1d8fa" stroke="rgba(147,197,253,0.3)" stroke-width="1"/>
+                            <circle cx="335" cy="420" r="22" fill="rgba(255,255,255,0.95)" stroke="#3a8ec4" stroke-width="2"/>
+                            <foreignObject x="315" y="398" width="40" height="44">
+                                <div xmlns="http://www.w3.org/1999/xhtml" style="display:flex;align-items:center;justify-content:center;width:100%;height:100%;font-size:22px;color:#3a8ec4;">
+                                    <i class="bi bi-gear"></i>
+                                </div>
+                            </foreignObject>
+                            <polygon points="190,310 540,310 540,560 190,560" fill="transparent" class="hover-area"/>
+                        </g>
+
+                        <g class="ice-section bottom-ice" data-section="passion">
+                            <polygon points="240,510 380,550 340,710" fill="#c7e1f8" stroke="rgba(96,165,250,0.2)" stroke-width="1"/>
+                            <polygon points="380,550 520,470 340,710" fill="#a6cff5" stroke="rgba(96,165,250,0.2)" stroke-width="1"/>
+                            <polygon points="240,510 340,710 290,660" fill="#8dc1f0" stroke="rgba(96,165,250,0.2)" stroke-width="1"/>
+                            <circle cx="335" cy="610" r="22" fill="rgba(255,255,255,0.95)" stroke="#1a3a5c" stroke-width="2"/>
+                            <foreignObject x="315" y="588" width="40" height="44">
+                                <div xmlns="http://www.w3.org/1999/xhtml" style="display:flex;align-items:center;justify-content:center;width:100%;height:100%;font-size:22px;color:#1a3a5c;">
+                                    <i class="bi bi-heart-fill"></i>
+                                </div>
+                            </foreignObject>
+                            <polygon points="220,500 560,460 370,730 280,690" fill="transparent" class="hover-area"/>
+                        </g>
+
+                        <circle cx="180" cy="390" r="4" fill="#38bdf8" opacity="0.15" class="bubble"/>
+                        <circle cx="520" cy="470" r="3.5" fill="#38bdf8" opacity="0.15" class="bubble"/>
+                        <circle cx="230" cy="570" r="4.5" fill="#0284c7" opacity="0.12" class="bubble"/>
+                        <circle cx="450" cy="650" r="3" fill="#0284c7" opacity="0.2" class="bubble"/>
+                    </g>
+
+                    <g class="info-branch top-branch" data-section="innovation">
+                        <polyline points="470, 270 660, 270 700, 245" fill="none" stroke="#E88D4D" stroke-width="2" stroke-dasharray="5 5" class="branch-line"/>
+                        <circle cx="470" cy="270" r="5" fill="#E88D4D" class="branch-dot"/>
+                        <g transform="translate(700, 185)">
+                            <rect width="260" height="80" rx="16" fill="rgba(255,255,255,0.95)" stroke="#E88D4D" stroke-width="1.5" style="filter:drop-shadow(0 6px 30px rgba(0,0,0,0.08))"/>
+                            <text x="130" y="32" font-family="'Unbounded', cursive" font-size="24" font-weight="600" fill="#E88D4D" text-anchor="middle">Инновации</text>
+                            <text x="130" y="58" font-family="'Montserrat', sans-serif" font-size="18" fill="#64748b" text-anchor="middle">Видимая часть</text>
+                        </g>
+                    </g>
+
+                    <g class="info-branch middle-branch" data-section="reliability">
+                        <polyline points="510, 470 660, 470 700, 445" fill="none" stroke="#3a8ec4" stroke-width="2" stroke-dasharray="5 5" class="branch-line"/>
+                        <circle cx="510" cy="470" r="5" fill="#3a8ec4" class="branch-dot"/>
+                        <g transform="translate(700, 385)">
+                            <rect width="260" height="80" rx="16" fill="rgba(255,255,255,0.95)" stroke="#3a8ec4" stroke-width="1.5" style="filter:drop-shadow(0 6px 30px rgba(0,0,0,0.08))"/>
+                            <text x="130" y="32" font-family="'Unbounded', cursive" font-size="24" font-weight="600" fill="#2a7aaa" text-anchor="middle">Надежность</text>
+                            <text x="130" y="58" font-family="'Montserrat', sans-serif" font-size="18" fill="#64748b" text-anchor="middle">Внутренние процессы</text>
+                        </g>
+                    </g>
+
+                    <g class="info-branch bottom-branch" data-section="passion">
+                        <polyline points="460, 620 660, 620 700, 595" fill="none" stroke="#1a3a5c" stroke-width="2" stroke-dasharray="5 5" class="branch-line"/>
+                        <circle cx="460" cy="620" r="5" fill="#1a3a5c" class="branch-dot"/>
+                        <g transform="translate(700, 535)">
+                            <rect width="260" height="80" rx="16" fill="rgba(255,255,255,0.95)" stroke="#1a3a5c" stroke-width="1.5" style="filter:drop-shadow(0 6px 30px rgba(0,0,0,0.08))"/>
+                            <text x="130" y="32" font-family="'Unbounded', cursive" font-size="24" font-weight="600" fill="#1a3a5c" text-anchor="middle">Страсть</text>
+                            <text x="130" y="58" font-family="'Montserrat', sans-serif" font-size="18" fill="#64748b" text-anchor="middle">Фундамент</text>
+                        </g>
+                    </g>
+                </svg>
             </div>
         </div>
     </div>
 </section>
 
-<!-- Projects Section -->
+<!-- ===== PROJECTS ===== -->
 <section class="projects" id="projects">
     <div class="container">
-        <h2>Наши проекты</h2>
-        <div class="section-subhead">Кейсы, которыми мы гордимся</div>
-        <div class="project-item">
-            <div class="project-info">
-                <h4>N1</h4>
-                <p>Описание</p>
+        <span class="section-badge">Наши проекты</span>
+        <h2>Кейсы, которыми мы гордимся</h2>
+        <p class="projects-desc">Реализованные решения для бизнеса и стартапов</p>
+        <div class="cards-grid">
+            <div class="value-card">
+                <div class="value-icon"><i class="bi bi-lightbulb"></i></div>
+                <div class="value-content">
+                    <h3>Инновации</h3>
+                    <p>Постоянно исследуем новые технологии и внедряем их в проекты</p>
+                </div>
             </div>
-            <div class="project-stat">...</div>
-        </div>
-        <div class="project-item">
-            <div class="project-info">
-                <h4>N2</h4>
-                <p>Описание</p>
+            <div class="value-card">
+                <div class="value-icon"><i class="bi bi-handshake"></i></div>
+                <div class="value-content">
+                    <h3>Надежность</h3>
+                    <p>Выполняем обещания и соблюдаем сроки даже в сложных проектах</p>
+                </div>
             </div>
-            <div class="project-stat">...</div>
-        </div>
-        <div class="project-item">
-            <div class="project-info">
-                <h4>N3</h4>
-                <p>Описание</p>
+            <div class="value-card">
+                <div class="value-icon"><i class="bi bi-heart-fill"></i></div>
+                <div class="value-content">
+                    <h3>Страсть</h3>
+                    <p>Любим то, что делаем, и вкладываем душу в каждый проект</p>
+                </div>
             </div>
-            <div class="project-stat">...</div>
         </div>
     </div>
 </section>
 
-<!-- Team Members Section -->
+<!-- ===== TEAM ===== -->
 <section class="team-members" id="team">
     <div class="container">
-        <h2 style="text-align: center">Наши специалисты</h2>
-        <p style="text-align: center; color: var(--text-secondary); margin-bottom: 20px;">Нас четверо. Конкурентов — сотни. <br>Качество — наше.</p>
+        <span class="section-badge">Команда</span>
+        <h2>Наши специалисты</h2>
+        <p class="team-desc">Нас четверо. Конкурентов — сотни. Качество — топ.</p>
         <div class="team-grid">
             <div class="member" data-member="maxim">
                 <div class="silhouette">
-                    <img src="images/maxim.jpg" alt="Максим У." class="member-photo" onerror="this.style.display='none'">
+                    <img src="images/maxim.jpg" alt="Максим У." class="member-photo">
                 </div>
                 <h4>Максим У.</h4>
                 <p>Тимлидер / Менеджер</p>
-                <button class="member-btn" data-member="maxim">Узнать подробнее</button>
+                <button class="member-btn" data-member="maxim">Подробнее</button>
             </div>
             <div class="member" data-member="vladislav">
                 <div class="silhouette">
-                    <img src="images/vladislav.jpg" alt="Владислав Ф." class="member-photo" onerror="this.style.display='none'">
+                    <img src="images/vladislav.jpg" alt="Владислав Ф." class="member-photo">
                 </div>
                 <h4>Владислав Ф.</h4>
                 <p>Разработчик / Дизайнер</p>
-                <button class="member-btn" data-member="vladislav">Узнать подробнее</button>
+                <button class="member-btn" data-member="vladislav">Подробнее</button>
             </div>
             <div class="member" data-member="erik">
                 <div class="silhouette">
-                    <img src="images/erik.jpg" alt="Эрик А." class="member-photo" onerror="this.style.display='none'">
+                    <img src="images/erik.jpg" alt="Эрик А." class="member-photo">
                 </div>
-              <h4>Эрик А.</h4>
+                <h4>Эрик А.</h4>
                 <p>Разработчик</p>
-                <button class="member-btn" data-member="erik">Узнать подробнее</button>
+                <button class="member-btn" data-member="erik">Подробнее</button>
             </div>
             <div class="member" data-member="milena">
                 <div class="silhouette">
-                    <img src="images/milena.jpg" alt="Мила Л." class="member-photo" onerror="this.style.display='none'">
+                    <img src="images/milena.jpg" alt="Мила Л." class="member-photo">
                 </div>
                 <h4>Мила Л.</h4>
                 <p>мл. Дизайнер</p>
-                <button class="member-btn" data-member="milena">Узнать подробнее</button>
+                <button class="member-btn" data-member="milena">Подробнее</button>
             </div>
         </div>
     </div>
 </section>
 
-<div id="teamModal" class="modal">
-    <div class="modal-content">
-        <span class="close-modal">&times;</span>
-        <div class="modal-member-layout">
-            <div class="member-modal-photo" id="modalMemberPhotoContainer">
-                <img id="modalMemberPhoto" src="images/maxim.jpg" alt="Фото сотрудника">
-            </div>
-            <div class="member-modal-info">
-                <h3 id="teamModalName">Максим У.</h3>
-                <div class="member-modal-role" id="teamModalRoleDisplay">Тимлидер / Менеджер</div>
-                <p id="teamModalBio" class="member-modal-bio">
-                    Руководит всеми процессами во время работы над проектами. Организует коммуникацию с клиентами, распределяет задачи внутри команды. Имеет сертификацию PMP и опыт управления распределёнными командами.
-                </p>
-                <div>
-                    <a href="#" id="teamModalLink" class="member-page-btn" target="_blank">
-                         Личная страница
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Join Section -->
-<section class="join-section">
+<!-- ===== JOIN ===== -->
+<section class="join-section" id="contact">
     <div class="container">
         <div class="join-card">
             <div class="join-content">
-                <h2>Стань частью нашей команды!</h2>
-                <div class="join-text">
-                    <p>Ты талантливый разработчик или дизайнер?<br> Готов к интересным проектам и профессиональному росту?<br> Тебе к нам!</p>
-                    <div class="join-features">
-                        <div class="feature-item"><i class="fas fa-check-circle"></i> Интересные проекты</div>
-                        <div class="feature-item"><i class="fas fa-check-circle"></i> Профессиональное развитие</div>
-                    </div>
+                <span class="section-badge">Присоединяйся</span>
+                <h2>Стань частью команды</h2>
+                <p>Ты талантливый разработчик или дизайнер? Готов к интересным проектам и профессиональному росту? Тебе к нам!</p>
+                <div class="join-features">
+                    <span class="feature-item"><i class="bi bi-check-circle-fill"></i> Интересные проекты</span>
+                    <span class="feature-item"><i class="bi bi-check-circle-fill"></i> Проф. развитие</span>
                 </div>
                 <div class="join-buttons">
-                    <button id="joinModalBtn" class="btn"><i class="fas fa-paper-plane"></i> Отправить заявку</button>
-                    <a href="#" class="btn"><i class="fas fa-file-alt"></i> Заполнить форму</a>
+                    <button id="joinModalBtn" class="btn btn-primary"><i class="bi bi-send-fill"></i> Отправить заявку</button>
+                    <a href="#" class="btn btn-secondary"><i class="bi bi-file-text-fill"></i> Заполнить форму</a>
                 </div>
             </div>
             <div class="join-image">
@@ -260,44 +334,57 @@
     </div>
 </section>
 
-<!-- CTA Section -->
+<!-- ===== CTA ===== -->
 <section class="cta-section">
     <div class="container">
-        <div class="cta-glow">Хотите реализовать крутой проект и нужны специалисты?</div>
+        <h2>Хотите реализовать крутой проект?</h2>
         <p>Напишите. Ответим и подберем лучший вариант для вашего бизнеса!</p>
         <button class="glass-btn" id="ctaButton">Связаться с нами</button>
     </div>
 </section>
 
+<!-- ===== MODALS ===== -->
 <!-- Contact Modal -->
 <div id="contactModal" class="modal">
     <div class="modal-content">
         <span class="close-modal">&times;</span>
         <div class="modal-header">
-            <h3>Как с нами связаться</h3>
-            <p class="modal-subtitle" style="color: var(--text-secondary);">Выберите удобный способ</p>
+            <h3>Связаться с нами</h3>
+            <p class="modal-subtitle">Выберите удобный способ</p>
         </div>
         <div class="contact-methods">
-            <a href="https://t.me/AXL_business" target="_blank" rel="noopener noreferrer" class="contact-method telegram">
-                <i class="fab fa-telegram"></i>
-                <span>Telegram</span>
+            <a href="https://t.me/AXL_business" target="_blank" class="contact-method telegram">
+                <i class="bi bi-telegram"></i> Telegram
             </a>
-            <a href="https://vk.com/axl_invincible"  target="_blank" rel="noopener noreferrer" class="contact-method vk">
-                <i class="fab fa-vk"></i>
-                <span>VKontakte</span>
+            <a href="https://vk.com/axl_technologies" target="_blank" class="contact-method vk">
+                <i class="bi bi-vk"></i> VKontakte
             </a>
-            <a href="mailto:axl.team@example.com" target="_blank" rel="noopener noreferrer" class="contact-method email">
-                <i class="fas fa-envelope"></i>
-                <span>Email</span>
+            <a href="mailto:axl.team@example.com" class="contact-method email">
+                <i class="bi bi-envelope-fill"></i> Email
             </a>
             <div class="contact-method phone">
-                <i class="fas fa-phone"></i>
-                <span>+7 (995) 055-35-48</span>
+                <i class="bi bi-phone-fill"></i> +7 (958) 856-35-48
             </div>
-            
             <div class="contact-method phone">
-                <i class="fas fa-phone"></i>
-                <span>+7 (993) 734-46-00</span>
+                <i class="bi bi-phone-fill"></i> +7 (993) 734-46-00
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Team Modal -->
+<div id="teamModal" class="modal">
+    <div class="modal-content team-modal">
+        <span class="close-modal">&times;</span>
+        <div class="modal-member-layout">
+            <div class="member-modal-photo">
+                <img id="modalMemberPhoto" src="images/maxim.jpg" alt="Фото сотрудника">
+            </div>
+            <div class="member-modal-info">
+                <h3 id="teamModalName">Максим У.</h3>
+                <div class="member-modal-role" id="teamModalRoleDisplay">Тимлидер</div>
+                <p id="teamModalBio" class="member-modal-bio">Описание</p>
+                <a href="#" id="teamModalLink" class="member-page-btn" target="_blank">Личная страница</a>
             </div>
         </div>
     </div>
@@ -308,35 +395,35 @@
     <div class="modal-content">
         <span class="close-modal">&times;</span>
         <div class="gallery-container">
-            <button class="gallery-nav prev" id="galleryPrev"><i class="fas fa-chevron-left"></i></button>
+            <button class="gallery-nav" id="galleryPrev"><i class="bi bi-chevron-left"></i></button>
             <div class="gallery-slide">
                 <img src="" alt="" class="gallery-image" id="galleryImage">
                 <div class="gallery-counter">
                     <span id="galleryCurrent">1</span> / <span id="galleryTotal">4</span>
                 </div>
             </div>
-            <button class="gallery-nav next" id="galleryNext"><i class="fas fa-chevron-right"></i></button>
+            <button class="gallery-nav" id="galleryNext"><i class="bi bi-chevron-right"></i></button>
         </div>
         <div class="gallery-thumbnails" id="galleryThumbnails"></div>
     </div>
 </div>
 
+<!-- ===== FOOTER ===== -->
 <footer class="footer">
-    <div class="container">
-        <div class="footer-content">
-            <span>© 2026 AXL Team — Все права защищены</span>
-            <div class="footer-links">
-                <a href="other/politics.html" target="_blank" rel="noopener noreferrer">Политика конфиденциальности</a>
-                <a href="other/conditions.html" target="_blank" rel="noopener noreferrer">Условия использования</a>
-            </div>
-            <div class="footer-social">
-                <a href="https://github.com/Waldemar-Foma" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
-                <a href="https://vk.com/axl_invincible" target="_blank" rel="noopener noreferrer"><i class="fab fa-vk"></i></a>
-                <a href="https://t.me/axel_Invincible" target="_blank" rel="noopener noreferrer"><i class="fab fa-telegram"></i></a>
-            </div>
+    <div class="container footer-content">
+        <span>© 2026 AXL Team — Все права защищены</span>
+        <div class="footer-links">
+            <a href="other/politics.html">Политика конфиденциальности</a>
+            <a href="other/conditions.html">Условия использования</a>
+        </div>
+        <div class="footer-social">
+            <a href="https://github.com/axl-technologies" target="_blank"><i class="bi bi-github"></i></a>
+            <a href="https://vk.com/axl_technologies" target="_blank"><i class="bi bi-vk"></i></a>
+            <a href="https://t.me/axl_technologies" target="_blank"><i class="bi bi-telegram"></i></a>
         </div>
     </div>
 </footer>
-    <script src="js/script.js"></script>
+
+<script src="js/script.js"></script>
 </body>
 </html>
