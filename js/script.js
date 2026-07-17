@@ -3,29 +3,46 @@ const teamModal = document.getElementById('teamModal');
 const galleryModal = document.getElementById('galleryModal');
 const closeButtons = document.querySelectorAll('.close-modal');
 
-// Open contact modal
-document.getElementById('contactNav')?.addEventListener('click', () => contactModal.style.display = 'flex');
-document.getElementById('joinModalBtn')?.addEventListener('click', () => contactModal.style.display = 'flex');
+// --- Открытие модалок ---
+document.getElementById('contactNav')?.addEventListener('click', () => openModal(contactModal));
+document.getElementById('joinModalBtn')?.addEventListener('click', () => openModal(contactModal));
+document.getElementById('ctaButton')?.addEventListener('click', () => openModal(contactModal));
+
+// --- Навигация (скролл) ---
 document.getElementById('heroButton')?.addEventListener('click', () => {
     document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });
 });
-document.getElementById('ctaButton')?.addEventListener('click', () => contactModal.style.display = 'flex');
 
-// Close modals
+// --- Универсальные функции для модалок ---
+function openModal(modal) {
+    if (!modal) return;
+    modal.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+}
+
+function closeModal(modal) {
+    if (!modal) return;
+    modal.style.display = 'none';
+    document.body.style.overflow = '';
+}
+
+// --- Закрытие модалок (кнопка X) ---
 closeButtons.forEach(btn => {
     btn.addEventListener('click', () => {
-        contactModal.style.display = 'none';
-        teamModal.style.display = 'none';
-        galleryModal.style.display = 'none';
+        closeModal(contactModal);
+        closeModal(teamModal);
+        closeModal(galleryModal);
     });
 });
 
+// --- Закрытие модалок (клик вне окна) ---
 window.addEventListener('click', (e) => {
-    if (e.target === contactModal) contactModal.style.display = 'none';
-    if (e.target === teamModal) teamModal.style.display = 'none';
-    if (e.target === galleryModal) galleryModal.style.display = 'none';
+    if (e.target === contactModal) closeModal(contactModal);
+    if (e.target === teamModal) closeModal(teamModal);
+    if (e.target === galleryModal) closeModal(galleryModal);
 });
 
+// --- Данные команды ---
 const teamData = {
     maxim: {
         name: "Максим У.",
@@ -57,75 +74,29 @@ const teamData = {
     }
 };
 
-
-function openModal(modal) {
-    if (!modal) return;
-    modal.style.display = 'flex';
-    document.body.style.overflow = 'hidden';
-}
-
-function closeModal(modal) {
-    if (!modal) return;
-    modal.style.display = 'none';
-    document.body.style.overflow = '';
-}
-
-// Обновите обработчики закрытия
-closeButtons.forEach(btn => {
-    btn.addEventListener('click', () => {
-        closeModal(contactModal);
-        closeModal(teamModal);
-        closeModal(galleryModal);
-    });
-});
-
-window.addEventListener('click', (e) => {
-    if (e.target === contactModal) closeModal(contactModal);
-    if (e.target === teamModal) closeModal(teamModal);
-    if (e.target === galleryModal) closeModal(galleryModal);
-});
-
+// --- Открытие модалки члена команды (единая функция) ---
 function openMemberModal(memberId) {
     const data = teamData[memberId];
     if (!data) return;
-    
+
     document.getElementById("teamModalName").textContent = data.name;
     document.getElementById("teamModalRoleDisplay").textContent = data.role;
     document.getElementById("teamModalBio").textContent = data.bio;
     document.getElementById("teamModalLink").href = data.link;
-    
+
     const modalPhoto = document.getElementById("modalMemberPhoto");
     modalPhoto.src = data.photo;
     modalPhoto.alt = data.name;
-    
+
+    // Запасное изображение, если фото не загрузилось
     modalPhoto.onerror = function() {
         this.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"%3E%3Ccircle cx="50" cy="50" r="45" fill="%23e8e8ed"/%3E%3Ctext x="50" y="67" font-size="40" text-anchor="middle" fill="%23999"%3E📷%3C/text%3E%3C/svg%3E';
     };
-    
+
     openModal(document.getElementById("teamModal"));
 }
 
-function openMemberModal(memberId) {
-    const data = teamData[memberId];
-    if (!data) return;
-    
-    document.getElementById("teamModalName").textContent = data.name;
-    document.getElementById("teamModalRoleDisplay").textContent = data.role;
-    document.getElementById("teamModalBio").textContent = data.bio;
-    document.getElementById("teamModalLink").href = data.link;
-    
-    const modalPhoto = document.getElementById("modalMemberPhoto");
-    modalPhoto.src = data.photo;
-    modalPhoto.alt = data.name;
-    
-    modalPhoto.onerror = function() {
-        this.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"%3E%3Ccircle cx="50" cy="50" r="45" fill="%23e8e8ed"/%3E%3Ctext x="50" y="67" font-size="40" text-anchor="middle" fill="%23999"%3E📷%3C/text%3E%3C/svg%3E';
-    };
-    
-    document.getElementById("teamModal").style.display = "flex";
-    document.body.style.overflow = "hidden";
-}
-
+// --- Обработчики для кнопок "Узнать подробнее" ---
 document.querySelectorAll(".member-btn").forEach(btn => {
     btn.addEventListener("click", (e) => {
         e.stopPropagation();
@@ -136,6 +107,7 @@ document.querySelectorAll(".member-btn").forEach(btn => {
     });
 });
 
+// --- Обработчики для кликов по аватаркам ---
 document.querySelectorAll(".member").forEach(card => {
     const silhouette = card.querySelector(".silhouette");
     if (silhouette) {
@@ -146,6 +118,7 @@ document.querySelectorAll(".member").forEach(card => {
     }
 });
 
+// ============= GALLERY =============
 const galleryImages = ['images/team.jpg', 'images/team_1.jpg', 'images/team_2.jpg', 'images/team_3.jpg'];
 let currentGalleryIndex = 0;
 const galleryImage = document.getElementById('galleryImage');
@@ -163,6 +136,7 @@ function updateGallery() {
     });
 }
 
+// Создание миниатюр для галереи
 galleryImages.forEach((img, idx) => {
     const thumb = document.createElement('div');
     thumb.className = 'thumbnail gallery-thumb';
@@ -189,7 +163,7 @@ document.getElementById('galleryNext')?.addEventListener('click', () => {
     updateGallery();
 });
 
-// Thumbnail click for main photo
+// Thumbnail click for main photo (для секции About)
 document.querySelectorAll('.thumbnail[data-img]').forEach(thumb => {
     thumb.addEventListener('click', () => {
         const imgSrc = thumb.dataset.img;
@@ -199,6 +173,7 @@ document.querySelectorAll('.thumbnail[data-img]').forEach(thumb => {
     });
 });
 
+// --- Навигация по якорям (data-nav) ---
 document.querySelectorAll('[data-nav]').forEach(link => {
     link.addEventListener('click', (e) => {
         e.preventDefault();
@@ -210,6 +185,7 @@ document.querySelectorAll('[data-nav]').forEach(link => {
     });
 });
 
+// --- Анимация смены главного фото в About ---
 document.addEventListener('DOMContentLoaded', function() {
     const mainVector = document.getElementById('mainVectorOverlay');
     const thumbnails = document.querySelectorAll('.thumbnail');
@@ -218,17 +194,12 @@ document.addEventListener('DOMContentLoaded', function() {
     thumbnails.forEach(thumb => {
         thumb.addEventListener('click', function() {
             const imgSrc = this.dataset.img;
-            
-            // Меняем главное фото
             if (mainPhoto) {
                 mainPhoto.src = imgSrc;
             }
-            
-            // Анимация вектора при смене фото
             if (mainVector) {
                 mainVector.style.opacity = '0';
                 mainVector.style.transform = 'scale(0.8)';
-                
                 setTimeout(() => {
                     mainVector.style.opacity = '1';
                     mainVector.style.transform = 'scale(1)';
@@ -236,4 +207,153 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
+});
+
+// ============================================================
+//   НОВАЯ ИНТЕРАКТИВНОСТЬ: АЙСБЕРГ + ТЕКСТ СЛЕВА
+// ============================================================
+
+document.addEventListener('DOMContentLoaded', function() {
+    const iceSections = document.querySelectorAll('.ice-section');
+    const infoBranches = document.querySelectorAll('.info-branch');
+    const dynamicItems = document.querySelectorAll('.dynamic-item');
+    const legendBtns = document.querySelectorAll('.legend-btn');
+    
+    // Маппинг уровней
+    const levelMap = {
+        'innovation': { 
+            class: 'highlight-innovation', 
+            icon: '💡',
+            title: 'Инновации',
+            desc: 'То, что клиент видит на релизе. Современные технологии, быстрый фронтенд и продуманный UX.',
+            tag: 'Верхушка'
+        },
+        'reliability': { 
+            class: 'highlight-reliability', 
+            icon: '⚙️',
+            title: 'Надежность',
+            desc: 'Внутренние процессы и архитектура. Базы данных, API, серверная логика — всё работает как часы.',
+            tag: 'Середина'
+        },
+        'passion': { 
+            class: 'highlight-passion', 
+            icon: '❤️',
+            title: 'Страсть',
+            desc: 'Наш фундамент и любовь к делу. Без неё невозможны ни инновации, ни надёжность.',
+            tag: 'Основание'
+        }
+    };
+
+    // Функция для активации уровня
+    function activateLevel(level) {
+        const data = levelMap[level];
+        if (!data) return;
+
+        // 1. Айсберг: добавляем класс active-level
+        iceSections.forEach(section => {
+            section.classList.toggle('active-level', section.dataset.section === level);
+        });
+        
+        // 2. Выноски
+        infoBranches.forEach(branch => {
+            branch.classList.toggle('active-level', branch.dataset.section === level);
+        });
+
+        // 3. Динамические элементы слева
+        dynamicItems.forEach(item => {
+            const isActive = item.dataset.level === level;
+            item.classList.toggle('active', isActive);
+            // Добавляем класс подсветки
+            item.classList.toggle(data.class, isActive);
+        });
+
+        // 4. Кнопки легенды
+        legendBtns.forEach(btn => {
+            btn.classList.toggle('active', btn.dataset.level === level);
+        });
+
+        // 5. Обновляем текст в динамическом блоке (опционально)
+        // Данные уже есть в HTML, но можно обновить и через JS
+    }
+
+    // Функция сброса
+    function resetLevels() {
+        iceSections.forEach(section => section.classList.remove('active-level'));
+        infoBranches.forEach(branch => branch.classList.remove('active-level'));
+        dynamicItems.forEach(item => {
+            item.classList.remove('active');
+            // Убираем все классы подсветки
+            Object.values(levelMap).forEach(val => {
+                item.classList.remove(val.class);
+            });
+        });
+        legendBtns.forEach(btn => btn.classList.remove('active'));
+    }
+
+    // --- СОБЫТИЯ ДЛЯ АЙСБЕРГА ---
+    [...iceSections, ...infoBranches].forEach(element => {
+        element.addEventListener('mouseenter', function() {
+            const level = this.dataset.section;
+            if (level && levelMap[level]) {
+                activateLevel(level);
+            }
+        });
+    });
+
+    // --- СОБЫТИЯ ДЛЯ КНОПОК ЛЕГЕНДЫ ---
+    legendBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            const level = this.dataset.level;
+            if (level && levelMap[level]) {
+                // Сбрасываем всё и активируем выбранный уровень
+                resetLevels();
+                activateLevel(level);
+                
+                // Находим соответствующий элемент айсберга и эмулируем наведение
+                const targetIce = document.querySelector(`.ice-section[data-section="${level}"]`);
+                if (targetIce) {
+                    targetIce.classList.add('active-level');
+                }
+                const targetBranch = document.querySelector(`.info-branch[data-section="${level}"]`);
+                if (targetBranch) {
+                    targetBranch.classList.add('active-level');
+                }
+            }
+        });
+    });
+
+    const icebergWrapper = document.querySelector('.iceberg-visual');
+    if (icebergWrapper) {
+        icebergWrapper.addEventListener('mouseleave', function(e) {
+            const related = e.relatedTarget;
+            if (related && (related.closest('.iceberg-visual') || related.closest('.info-branch'))) {
+                return;
+            }
+            iceSections.forEach(section => section.classList.remove('active-level'));
+            infoBranches.forEach(branch => branch.classList.remove('active-level'));
+        });
+    }
+
+    dynamicItems.forEach(item => {
+        item.addEventListener('click', function() {
+            const level = this.dataset.level;
+            if (!level) return;
+            
+            // Активируем уровень
+            resetLevels();
+            activateLevel(level);
+            
+            // Находим секцию для скролла
+            let targetSection = document.querySelector(`section[data-section="${level}"]`) || document.getElementById(level);
+            if (targetSection) {
+                targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                targetSection.classList.add('section-highlight');
+                setTimeout(() => targetSection.classList.remove('section-highlight'), 2000);
+            }
+        });
+    });
+
+    setTimeout(() => {
+        activateLevel('innovation');
+    }, 300);
 });
