@@ -744,27 +744,35 @@ p {
     margin-bottom: 32px;
 }
 
+/* АДАПТИВНАЯ СЕТКА КОМАНДЫ */
 .team-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 32px;
     max-width: 900px;
     margin: 0 auto;
+    justify-items: center;
 }
 
 .member {
     text-align: center;
+    width: 100%;
+    max-width: 220px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .silhouette {
-    width: 120px;
-    height: 120px;
+    width: 150px;
+    height: 150px;
     background: #e8e8ed;
     border-radius: 50%;
     margin: 0 auto 14px;
     overflow: hidden;
     transition: var(--transition);
     cursor: pointer;
+    flex-shrink: 0;
 }
 
 .member-photo {
@@ -782,12 +790,14 @@ p {
     font-size: 1rem;
     font-weight: 500;
     font-family: 'Unbounded', cursive;
+    margin-top: 4px;
 }
 
 .member p {
     font-size: 0.8rem;
     color: var(--text-secondary);
     margin-top: 2px;
+    flex: 1;
 }
 
 .member-btn {
@@ -808,6 +818,154 @@ p {
     border-color: var(--accent);
     color: var(--accent);
     background: rgba(var(--accent-rgb), 0.05);
+}
+
+/* ===== АДАПТИВ ДЛЯ РАЗНОГО КОЛИЧЕСТВА УЧАСТНИКОВ ===== */
+
+/* 1 участник — по центру */
+.team-grid:has(.member:only-child) {
+    grid-template-columns: 1fr;
+    justify-items: center;
+}
+
+/* 2 участника */
+.team-grid:has(.member:nth-child(2):last-child) {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 500px;
+    justify-items: center;
+}
+
+/* 3 участника — по умолчанию (уже настроено) */
+.team-grid:has(.member:nth-child(3):last-child) {
+    grid-template-columns: repeat(3, 1fr);
+    max-width: 700px;
+    justify-items: center;
+}
+
+/* 4 участника */
+.team-grid:has(.member:nth-child(4):last-child) {
+    grid-template-columns: repeat(4, 1fr);
+    max-width: 900px;
+    justify-items: center;
+}
+
+/* 5+ участников */
+.team-grid:has(.member:nth-child(5):last-child),
+.team-grid:has(.member:nth-child(6):last-child) {
+    grid-template-columns: repeat(3, 1fr);
+    max-width: 800px;
+    justify-items: center;
+}
+
+/* ===== МЕДИА-ЗАПРОСЫ ===== */
+
+@media (max-width: 768px) {
+    .team-grid {
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+        gap: 24px;
+        max-width: 100%;
+    }
+    
+    .member {
+        max-width: 180px;
+    }
+    
+    .silhouette {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .member h4 {
+        font-size: 0.9rem;
+    }
+    
+    .member p {
+        font-size: 0.7rem;
+    }
+    
+    .member-btn {
+        font-size: 0.6rem;
+        padding: 3px 12px;
+    }
+    
+    /* 4 участника на планшете → 2 колонки */
+    .team-grid:has(.member:nth-child(4):last-child) {
+        grid-template-columns: repeat(2, 1fr);
+        max-width: 400px;
+    }
+    
+    /* 5+ участников на планшете → 2 колонки */
+    .team-grid:has(.member:nth-child(5):last-child),
+    .team-grid:has(.member:nth-child(6):last-child) {
+        grid-template-columns: repeat(2, 1fr);
+        max-width: 450px;
+    }
+}
+
+@media (max-width: 480px) {
+    .team-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+        max-width: 320px;
+    }
+    
+    .member {
+        max-width: 140px;
+    }
+    
+    .silhouette {
+        width: 80px;
+        height: 80px;
+    }
+    
+    .member h4 {
+        font-size: 0.85rem;
+    }
+    
+    .member p {
+        font-size: 0.7rem;
+    }
+    
+    .member-btn {
+        font-size: 0.6rem;
+        padding: 3px 12px;
+    }
+    
+    /* 1 участник на мобилке */
+    .team-grid:has(.member:only-child) {
+        grid-template-columns: 1fr;
+        max-width: 200px;
+    }
+    
+    /* 3 участника на мобилке → 2 + 1 (перенос) */
+    .team-grid:has(.member:nth-child(3):last-child) {
+        grid-template-columns: repeat(2, 1fr);
+        max-width: 320px;
+    }
+    
+    /* 5+ участников на мобилке → 2 колонки */
+    .team-grid:has(.member:nth-child(5):last-child),
+    .team-grid:has(.member:nth-child(6):last-child) {
+        grid-template-columns: repeat(2, 1fr);
+        max-width: 320px;
+    }
+}
+
+@media (max-width: 380px) {
+    .team-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+        max-width: 280px;
+    }
+    
+    .member {
+        max-width: 120px;
+    }
+    
+    .silhouette {
+        width: 70px;
+        height: 70px;
+    }
 }
 
 /* ===== JOIN ===== */
